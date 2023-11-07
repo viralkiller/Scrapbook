@@ -2,11 +2,15 @@
 instructions on how to configure pythonanywhere for github
 
 # Setup creds on pythonanywhere:
-git config --global user.name "Your Name"
-git config --global user.email "your_email@example.com"
+git config --global user.name "astaroth"
+git config --global user.email "jules3313@gmail.com"
 
 # Change your remote URL from HTTPS to SSH:
-git remote set-url origin git@github.com:username/repo.git
+
+git remote add origin git@github.com:viralkiller/DAMI.git
+
+
+git remote set-url origin git@github.com:viralkiller/DAMI.git
 
 # Generate SSH on pythonanywhere
 ssh-keygen -t ed25519 -C "your_email@example.com"
