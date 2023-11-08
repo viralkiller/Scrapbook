@@ -1,6 +1,8 @@
 # github_instructions
 instructions on how to configure pythonanywhere for github
 
+git init
+
 # Setup creds on pythonanywhere:
 git config --global user.name "astaroth"
 git config --global user.email "jules3313@gmail.com"
