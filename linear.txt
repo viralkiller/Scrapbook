@@ -1,20 +1,18 @@
-[make a .gitignore file on pythonanywhere, exclude cache dirs etc]
+[make a .gitignore file on pythonanywhere, see example file in the repo]
 git init
-git config --global user.name "astaroth" 
+git config --global user.name "project_name" 
 git config --global user.email "jules3313@gmail.com"
-git remote add origin git@github.com:viralkiller/_Payment_Gateway.git
-git remote set-url origin git@github.com:viralkiller/_Payment_Gateway.git
+git remote add origin git@github.com:viralkiller/_Example_Repo.git
+git remote set-url origin git@github.com:viralkiller/_Example_Repo.git
 ssh-keygen -t ed25519 -C "jules3313@gmail.com"
-[Enter 3 times, open created file, copy key]
-[Add to github]
+[enter 3 times, open created file, copy key, paste to hithub]
 git pull origin master --allow-unrelated-histories 
-[Choose option in VIM] 
-[ZZ to quit VIM]
+[choose option in VIM, ZZ to quit editor] 
 git add .
 git commit -a -m "msg"
 git push -u origin master
 
-Additional tips:
+Additional Tips:
 git rm -r --cached .
-[updates .gitignore changes]
+[updates .gitignore changes, if any made after git add . command]
 
