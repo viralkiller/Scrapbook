@@ -1,6 +1,6 @@
 [create a repo in github, change main branch name to 'master']
 
-[make a .gitignore file on pythonanywhere, see example file in the repo]
+[make a .gitignore file on pythonanywhere, see example file in this repo]
 git init
 git config --global user.name "project_name" 
 git config --global user.email "jules3313@gmail.com"
