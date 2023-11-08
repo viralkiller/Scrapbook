@@ -12,7 +12,15 @@ git add .
 git commit -a -m "msg"
 git push -u origin master
 
-Additional Tips:
+[Additional Tips]
+
+[clear cache]
 git rm -r --cached .
 [updates .gitignore changes, if any made after git add . command]
+
+[tag a release]
+git tag -a v1.0 -m "Release version 1.0"
+git push origin v1.0
+
+
 
