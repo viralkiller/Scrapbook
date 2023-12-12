@@ -49,3 +49,7 @@ pip install requests
 pip install Pillow
 pip install pandas
 pip install cryptography
+
+
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///sql/users.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////home/nodesgpt/sql/users.db'
