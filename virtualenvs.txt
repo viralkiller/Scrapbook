@@ -20,3 +20,32 @@ with open(activate_this) as file_:
 
 [set the virtual env field in the Web section]
 [open console from Web section, reinstall pips]
+
+pip3.8 install flask-cors
+pip3.8 install Flask-Mail
+pip3.8 install Flask-SQLAlchemy
+pip3.8 install SQLAlchemy-Utils
+pip3.8 install Werkzeug
+pip3.8 install itsdangerous
+pip3.8 install user-agents
+pip3.8 install openai
+pip3.8 install pytube
+
+pip install flask-cors
+pip install Flask-Mail
+pip install Flask-SQLAlchemy
+pip install SQLAlchemy-Utils
+pip install Werkzeug
+pip install itsdangerous
+pip install user-agents
+pip install openai
+pip install pytube
+
+#extended for virtualenv
+pip install Flask
+pip install Flask-Login
+pip install Flask-WTF
+pip install requests
+pip install Pillow
+pip install pandas
+pip install cryptography
