@@ -65,3 +65,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////home/nodesgpt/sql/users.db'
 chmod +x _Trans_Functions.py
 #!/usr/bin/env python3.8
 #!/home/nodesgpt/.virtualenvs/myenv38/bin/python3.8
+
+further issues were fixed with:
+pip3.8 uninstall pydantic
+pip3.8 install pydantic
