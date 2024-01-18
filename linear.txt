@@ -24,5 +24,9 @@ git rm -r --cached .
 git tag -a v1.0 -m "Release version 1.0"
 git push origin v1.0
 
+[new branch live/dev]
+git checkout -b nodes-gpt-live
+git push -u origin nodes-gpt-live
+
 
 
