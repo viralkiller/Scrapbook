@@ -28,5 +28,14 @@ git push origin v1.0
 git checkout -b nodes-gpt-live
 git push -u origin nodes-gpt-live
 
+[sparse checkout]
+git sparse-checkout init
+git sparse-checkout set static/csv
+(git config --global user.email "jules3313@gmail.com")
+(git config --global user.name "VK")
+git fetch origin
+git reset --hard origin/nodes-gpt-live
+
+
 
 
