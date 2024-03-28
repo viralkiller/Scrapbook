@@ -38,6 +38,17 @@ pip3.8 install itsdangerous
 pip3.8 install user-agents
 pip3.8 install openai
 pip3.8 install pytube
+---
+ignore:
+pip install flask-cors
+pip install Flask-Mail
+pip install Flask-SQLAlchemy
+pip install SQLAlchemy-Utils
+pip install Werkzeug
+pip install itsdangerous
+pip install user-agents
+pip install openai
+pip install pytube
 
 pip install flask-cors
 pip install Flask-Mail
