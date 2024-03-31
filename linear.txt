@@ -36,6 +36,10 @@ git sparse-checkout set static/csv
 git fetch origin
 git reset --hard origin/nodes-gpt-live
 
+[remove cached gitignore]
+git rm -r --cached .
+
+
 
 
 
