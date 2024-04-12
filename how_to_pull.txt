@@ -11,3 +11,39 @@ git commit -m "Initial commit"
 git stash push --include-untracked
 git pull origin nodes-gpt-live --allow-unrelated-histories
 
+[core]
+     editor = vim
+     pager = less
+
+[color]
+     diff = auto
+     status = auto
+     branch = auto
+     interactive = auto
+     pager = true
+     ui = auto
+
+[alias]
+     hist = log --graph --oneline --decorate
+     st = status
+
+[user]
+     name = nodes-gpt-dev
+     email = jules3313@gmail.com
+
+
+git config --list
+git merge --abort
+git fetch --all
+git reset --hard origin/nodes-gpt-live
+
+***now push pack to nodes-gpt-dev***
+git checkout -b nodes-gpt-dev
+
+git merge origin/nodes-gpt-live
+
+git push -u origin nodes-gpt-dev --force
+
+
+
+
