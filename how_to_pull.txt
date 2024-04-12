@@ -1,0 +1,13 @@
+git init
+git config --global user.name "nodes-gpt-dev" 
+git config --global user.email "jules3313@gmail.com"
+git remote add origin git@github.com:viralkiller/Nodes-GPT.git
+git remote set-url origin git@github.com:viralkiller/Nodes-GPT.git
+
+
+git init
+git add .
+git commit -m "Initial commit"
+git stash push --include-untracked
+git pull origin nodes-gpt-live --allow-unrelated-histories
+
