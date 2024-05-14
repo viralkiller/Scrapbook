@@ -9,7 +9,8 @@ git remote set-url origin git@github.com:viralkiller/Nodes-GPT.git
 ssh-keygen -t ed25519 -C "jules3313@gmail.com"
 [enter 3 times, open created file, copy key, paste to hithub]
 git pull origin master --allow-unrelated-histories 
-[choose option in VIM, ZZ to quit editor] 
+[choose option in VIM, ZZ to quit editor]
+[Create the .gitignore file]
 git add .
 git commit -a -m "msg"
 git push -u origin master
