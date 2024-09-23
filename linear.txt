@@ -7,7 +7,7 @@ git config --global user.email "jules3313@gmail.com"
 git remote add origin git@github.com:viralkiller/Nodes-GPT.git
 git remote set-url origin git@github.com:viralkiller/Nodes-GPT.git
 ssh-keygen -t ed25519 -C "jules3313@gmail.com"
-[enter 3 times, open created file, copy key, paste to hithub]
+[enter 3 times, open created file, copy key, paste to https://github.com/settings/keys]
 
 [Create the .gitignore file]
 [Make sure you created a master branch and set it as main]
