@@ -1,0 +1,1 @@
+find /home/nodesgpt -type f -exec du -h {} + | sort -rh | head -n 10
