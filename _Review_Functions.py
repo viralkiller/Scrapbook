@@ -6,7 +6,7 @@ class CodeAggregator:
         self.output_filename = output_filename
 
     def append_file_content(self, content_list, file_path):
-        header = f"=== {file_path} ===\n"
+        header = f"#### #### #### #### This file: {file_path} #### #### #### #### Contents:\n\n"
         try:
             with open(file_path, 'r', encoding='utf-8') as f:
                 file_content = f.read()
