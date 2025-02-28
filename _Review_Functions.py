@@ -64,7 +64,14 @@ class CodeAggregator:
             files = directory.rglob('*')
         else:
             files = directory.glob('*')
+        
+        # Add current file path to exclude it from aggregation
+        current_file = Path(__file__).resolve()
+        
         for file in files:
+            # Skip the aggregator file itself
+            if file.resolve() == current_file:
+                continue
             if file.suffix in extensions and file.is_file():
                 self.append_file_content(contents, file)
         return contents
