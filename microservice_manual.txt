@@ -1,0 +1,116 @@
+File Converter Microservice API  
+Base URL: https://convertManager.pythonanywhere.com  
+
+1. Homepage  
+GET /  
+Loads the homepage with available conversion options.  
+Inputs: None  
+Outputs: HTML webpage  
+
+2. Image Conversion  
+POST /convert/image  
+Converts an uploaded image to a different format.  
+Inputs: Form Data: file (required), Query Parameter: format (jpg, png, gif, avif, bmp, webp)  
+Outputs: Success: converted image file, Error: JSON { "error": "description" }  
+Example: curl -X POST -F "file=@image.png" "https://convertManager.pythonanywhere.com/convert/image?format=jpg" -o output.jpg  
+
+POST /convert/image_png_upload  
+Converts an image to PNG and uploads to ImgBB.  
+Inputs: Form Data: file (required)  
+Outputs: Success: JSON { "url": "uploaded_image_url" }, Error: JSON { "error": "description" }  
+
+AI Manager API  
+Base URL: https://aimanager.pythonanywhere.com  
+
+1. OpenAI GPT Queries  
+POST /ask_question (GPT-4o)  
+Queries GPT-4o for a response.  
+Inputs: JSON { "query": "question", "max_words": 100 }  
+Outputs: JSON { "response": "answer" }  
+
+POST /ask_question_reason (GPT-3.5)  
+Reasoning-based query with GPT-3.5  
+Inputs and Outputs same as /ask_question  
+
+POST /ask_question_45 (GPT-4.5)  
+GPT-4.5 query  
+Inputs and Outputs same as /ask_question  
+
+2. Claude AI Queries  
+POST /ask_claude (Claude-3.7)  
+Queries Claude AI for a response  
+Inputs: JSON { "query": "question" }  
+Outputs: JSON { "response": "answer" }  
+
+POST /ask_claude_think  
+Extended reasoning with Claude AI  
+Inputs: JSON { "query": "question", "budget_tokens": 3000 }  
+Outputs: More detailed response  
+
+3. Image Analysis & Generation  
+POST /analyze_image  
+Analyzes an image using OpenAI Vision models  
+Inputs: JSON { "image_source": "image_url", "detail": "auto", "is_url": true }  
+Outputs: JSON { "response": "description of image" }  
+
+POST /generate_dalle  
+Generates an AI image using DALL-E 3  
+Inputs: JSON { "prompt": "description", "model": "dall-e-3", "img_size": "1024x1024", "n": 1, "quality": "hd" }  
+Outputs: JSON { "image_url": "generated_image_url" }  
+
+Email Gateway API  
+Base URL: https://emailgateway.pythonanywhere.com  
+
+1. Email Sending  
+POST /api_x  
+Sends an email with failover across multiple SMTP servers  
+Inputs: JSON { "recipient": "email", "subject": "title", "body": "message", "send_type": "text" }  
+Headers: X-API-KEY required  
+Outputs: Success: JSON { "message": "Email sent successfully." }, Error: JSON { "message": "Failed to send email." }  
+
+2. Homepage  
+GET /  
+Loads the homepage  
+
+3. Contact Page  
+GET /contact/<contact_ID>  
+Renders contact page with given contact ID  
+
+Login Manager API  
+Base URL: https://loginmanager.pythonanywhere.com  
+
+1. User Registration  
+POST /register  
+Registers a new user  
+Inputs: JSON { "username": "name", "email": "email", "password": "password", "domain": "example.com" }  
+Outputs: Success: JSON { "message": "User registered successfully." }, Error: JSON { "message": "Username or email exists." }  
+
+2. User Login  
+POST /login  
+Authenticates a user and returns a JWT token  
+Inputs: JSON { "username": "name", "password": "password", "domain": "example.com" }  
+Outputs: Success: JSON { "message": "Login successful", "token": "jwt_token" }, Error: JSON { "message": "Invalid credentials." }  
+
+3. Email Verification  
+GET /verify_email  
+Verifies user email using token  
+Inputs: Query parameter: token=<verification_token>  
+Outputs: Success: Redirects to login page, Error: JSON { "message": "Invalid or expired token." }  
+
+4. Protected Route  
+GET /protected  
+Sample protected endpoint requiring JWT authentication  
+Inputs: Header Authorization: Bearer jwt_token  
+Outputs: Success: JSON { "message": "Welcome [username]!" }, Error: JSON { "message": "Invalid or expired token." }  
+
+5. Cleanup Unverified Users  
+POST /cleanup_unverified  
+Deletes unverified users older than 24 hours  
+Inputs: Query Parameter: secret=cleanup_secret  
+Outputs: Success: JSON { "message": "Deleted X unverified user(s)." }, Error: JSON { "message": "Unauthorized." }  
+
+API Links  
+File Converter API: https://convertManager.pythonanywhere.com  
+AI Manager API: https://aimanager.pythonanywhere.com  
+Email Gateway API: https://emailgateway.pythonanywhere.com  
+Login Manager API: https://loginmanager.pythonanywhere.com
