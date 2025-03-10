@@ -1,12 +1,17 @@
 import os
 import re
 from pathlib import Path
+from datetime import datetime
 
 class CodeAggregator:
-    def __init__(self, root_dir='.', output_filename='viralkiller_project_directory.txt', compact=False):
+    def __init__(self, root_dir='.', output_filename='project_directory_full_code.txt',
+                 compact=False, excluded_extensions=None, description_text=""):
         self.root_dir = Path(root_dir)
         self.output_filename = output_filename
         self.compact = compact
+        # Set excluded extensions; if none provided, use an empty list
+        self.excluded_extensions = excluded_extensions if excluded_extensions is not None else []
+        self.description_text = description_text
 
     def append_file_content(self, content_list, file_path):
         header = f"#### #### #### #### This file: {file_path} #### #### #### #### Contents:\n\n"
@@ -60,18 +65,18 @@ class CodeAggregator:
 
     def aggregate_files(self, directory, extensions, recursive=False):
         contents = []
-        if recursive:
-            files = directory.rglob('*')
-        else:
-            files = directory.glob('*')
-        
+        files = directory.rglob('*') if recursive else directory.glob('*')
         # Add current file path to exclude it from aggregation
         current_file = Path(__file__).resolve()
-        
+
         for file in files:
             # Skip the aggregator file itself
             if file.resolve() == current_file:
                 continue
+            # Exclude files with extensions in the excluded list
+            if file.suffix in self.excluded_extensions:
+                continue
+            # Check if file is in the allowed extensions list and is a file
             if file.suffix in extensions and file.is_file():
                 self.append_file_content(contents, file)
         return contents
@@ -96,12 +101,30 @@ class CodeAggregator:
         if js_path.is_dir():
             contents.extend(self.aggregate_files(js_path, ['.js']))
 
+        # Add a description header with timestamp at the top if provided.
+        if self.description_text:
+            timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            header = f"Description:\n{self.description_text}\n\nAggregated on: {timestamp}\n{'=' * 80}\n\n"
+            contents.insert(0, header)
+
+        # Append how_it_works.txt at the very end if it exists in the project root directory.
+        how_it_works_file = self.root_dir / 'how_it_works.txt'
+        if how_it_works_file.exists() and how_it_works_file.is_file():
+            contents.append("\n" + "=" * 80 + "\n")
+            self.append_file_content(contents, how_it_works_file)
+
         # Write all aggregated content into one text file
         with open(self.output_filename, 'w', encoding='utf-8') as output_file:
             output_file.write("\n".join(contents))
 
 if __name__ == "__main__":
-    # Set compact=True to remove blank lines and comments
-    aggregator = CodeAggregator(compact=True)
+    # Example: exclude .css files from aggregation and add a multiline description header.
+    multiline_description = (
+        "This is the Nodes-GPT project.\n"
+        "Like Nuke with video editing, it allows node based AI operations to be carried out for fun possibilities.\n"
+        "."
+    )
+    aggregator = CodeAggregator(compact=True, excluded_extensions=['.css'],
+                                description_text=multiline_description)
     aggregator.aggregate()
-    print(f"Aggregated code has been written to {aggregator.output_filename}")
+    print(f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')} - Aggregated code has been written to {aggregator.output_filename}")
