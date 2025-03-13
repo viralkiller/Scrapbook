@@ -14,7 +14,7 @@ class CodeAggregator:
         self.description_text = description_text
 
     def append_file_content(self, content_list, file_path):
-        header = f"#### #### #### #### This file: {file_path} #### #### #### #### Contents:\n\n"
+        header = f"\n#### #### #### #### This file: {file_path} #### #### #### #### Contents:\n\n"
         try:
             file_content = file_path.read_text(encoding='utf-8')
         except Exception as e:
@@ -51,6 +51,11 @@ class CodeAggregator:
                 line = line.split('//', 1)[0]
                 if line.strip():
                     new_lines.append(line.rstrip())
+            return "\n".join(new_lines)
+        elif extension == '.json':
+            # For JSON, we just remove empty lines
+            lines = content.splitlines()
+            new_lines = [line.rstrip() for line in lines if line.strip()]
             return "\n".join(new_lines)
         elif extension == '.css':
             # Remove CSS block comments
@@ -100,6 +105,11 @@ class CodeAggregator:
         js_path = self.root_dir / 'static' / 'js'
         if js_path.is_dir():
             contents.extend(self.aggregate_files(js_path, ['.js']))
+            
+        # Process JSON files in the static/json folder
+        json_path = self.root_dir / 'static' / 'json'
+        if json_path.is_dir():
+            contents.extend(self.aggregate_files(json_path, ['.json']))
 
         # Add a description header with timestamp at the top if provided.
         if self.description_text:
