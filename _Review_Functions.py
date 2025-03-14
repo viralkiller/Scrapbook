@@ -14,7 +14,7 @@ class CodeAggregator:
         self.description_text = description_text
 
     def append_file_content(self, content_list, file_path):
-        header = f"\n#### #### #### #### This file: {file_path} #### #### #### #### Contents:\n\n"
+        header = f"\no_o #### #### #### #### This file: {file_path} #### #### #### #### Contents:\n\n"
         try:
             file_content = file_path.read_text(encoding='utf-8')
         except Exception as e:
@@ -105,7 +105,7 @@ class CodeAggregator:
         js_path = self.root_dir / 'static' / 'js'
         if js_path.is_dir():
             contents.extend(self.aggregate_files(js_path, ['.js']))
-            
+
         # Process JSON files in the static/json folder
         json_path = self.root_dir / 'static' / 'json'
         if json_path.is_dir():
@@ -132,9 +132,9 @@ if __name__ == "__main__":
     multiline_description = (
         "This is the Nodes-GPT project.\n"
         "Like Nuke with video editing, it allows node based AI operations to be carried out for fun possibilities.\n"
-        "."
+        "For the duration of this chat o_o will signify separation, between files, or between text and user queries, and ^_^ is where you should focus, where the main task is."
     )
-    aggregator = CodeAggregator(compact=True, excluded_extensions=['.css'],
+    aggregator = CodeAggregator(compact=True, excluded_extensions=['.css','.html'],
                                 description_text=multiline_description)
     aggregator.aggregate()
     print(f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')} - Aggregated code has been written to {aggregator.output_filename}")
