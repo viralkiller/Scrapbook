@@ -1,0 +1,394 @@
+import os
+import time
+import json
+import requests
+import _Node_Processes
+
+def load_node_config():
+    json_path = os.path.join('static', 'json', 'node_config.json')
+    with open(json_path, 'r', encoding='utf-8') as f:
+        return json.load(f)
+
+def get_base_id(node_id):
+    """
+    Helper to strip off a leading 'node_' prefix from the ID if present.
+    """
+    if node_id.startswith("node_"):
+        return node_id[5:]
+    return node_id
+
+class ChainProcessor:
+    def __init__(
+        self,
+        user_id,
+        user_email,
+        input_text,
+        process_steps,
+        txt_ops,
+        time_functions,
+        purchase_manager,
+        session,
+        call_ai_func
+    ):
+        self.user_id = user_id
+        self.user_email = user_email
+        self.original_text = input_text
+        self.process_steps = process_steps or {}  # contains adj_list, topo_order, node_names, etc.
+        self.txt_ops = txt_ops
+        self.time_functions = time_functions
+        self.purchase_manager = purchase_manager
+        self.session = session
+        self.call_ai = call_ai_func
+
+        self.node_config = load_node_config()
+        self.total_credits_to_deduct = 0
+        self.event_log = ""
+
+        # Working state variables reset before each node:
+        self.processed_text = None
+        self.image_url = None
+
+        # CV / user-specific data
+        self.cv_exists = False
+        self.actual_cv_file_path = ""
+        self.actual_cv_file_fullpath = ""
+        self.cv_contents = ""
+        self.get_extension = ""
+
+        self.user_dir = os.path.join('static', 'csv', 'user_data', str(user_id))
+        self.session_txt_path = os.path.join(self.user_dir, 'session.txt')
+
+    # --------------------------------------------------------------------------
+    # BFS & partial topo sort logic
+    # --------------------------------------------------------------------------
+    def _bfs_forward(self, adjacency, start):
+        """
+        Return the set of nodes reachable by BFS from `start`.
+        """
+        from collections import deque
+        visited = set()
+        queue = deque([start])
+        while queue:
+            node = queue.popleft()
+            if node not in visited:
+                visited.add(node)
+                for child in adjacency.get(node, []):
+                    if child not in visited:
+                        queue.append(child)
+        return visited
+
+    def _bfs_backward(self, adjacency, start):
+        """
+        Return the set of nodes that can reach `start`, by reversing edges
+        and doing BFS.
+        """
+        from collections import defaultdict, deque
+        reverse_adj = defaultdict(list)
+        for n, children in adjacency.items():
+            for c in children:
+                reverse_adj[c].append(n)
+
+        visited = set()
+        queue = deque([start])
+        while queue:
+            node = queue.popleft()
+            if node not in visited:
+                visited.add(node)
+                for parent in reverse_adj[node]:
+                    if parent not in visited:
+                        queue.append(parent)
+        return visited
+
+    def _partial_topo_sort(self, adjacency):
+        """
+        Perform a topological sort on the subgraph, ignoring cycles. If a node
+        remains in a cycle, it will never appear with in-degree=0 and thus won't
+        appear in the final sorted list.
+        """
+        from collections import deque
+        in_degree = {}
+        for node, children in adjacency.items():
+            in_degree.setdefault(node, 0)
+            for c in children:
+                in_degree[c] = in_degree.get(c, 0) + 1
+
+        queue = deque([n for n, deg in in_degree.items() if deg == 0])
+        result = []
+        while queue:
+            current = queue.popleft()
+            result.append(current)
+            for child in adjacency[current]:
+                in_degree[child] -= 1
+                if in_degree[child] == 0:
+                    queue.append(child)
+        return result
+
+    # --------------------------------------------------------------------------
+    # Node config / name / handler lookups
+    # --------------------------------------------------------------------------
+    def _lookup_node_config(self, node_id):
+        base = get_base_id(node_id)
+        for node_key, config in self.node_config.items():
+            if "selected_handler" in config:
+                config_base = node_key.replace("node_", "")
+                if base == config_base:
+                    return config
+        return None
+
+
+    def _get_node_pos_y(self, node_id):
+        """
+        Look up the node's y-position from self.node_config.
+        Return 0 if not found or if the data is structured differently.
+        """
+        node_data = self.node_config.get(node_id, {})
+        # If your node config stores a simple integer at node_data["pos_y"]:
+        return node_data.get("pos_y", 0)
+
+        # OR, if it's nested like:
+        #   "pos_y": {"default":100,"last":120}
+        # then do:
+        # pos_y_info = node_data.get("pos_y", {})
+        # return pos_y_info.get("last", pos_y_info.get("default", 0))
+
+
+    def _get_node_name(self, node_id):
+        """
+        If the front-end has provided a 'node_names' dictionary, use that.
+        Otherwise, fall back to node_id.
+        """
+        node_names_dict = self.process_steps.get("node_names", {})
+        return node_names_dict.get(node_id, node_id)
+
+    def _get_handler_for_node(self, node_id):
+        """
+        Decide which _process_* function to call, based on the node's 'name'.
+        """
+        if node_id in ("input_text", "output_text"):
+            return None
+
+        node_name = self._get_node_name(node_id)
+
+        # Direct checks for known prefixes
+        if node_name.startswith("translate_"):
+            return getattr(_Node_Processes, "_process_translate", None)
+        elif node_name.startswith("ask_question_claude_think"):
+            return getattr(_Node_Processes, "_process_ask_question_claude_think", None)
+        elif node_name.startswith("ask_question_claude"):
+            return getattr(_Node_Processes, "_process_ask_question_claude", None)
+        elif node_name.startswith("ask_question_gpt4o"):
+            return getattr(_Node_Processes, "_process_ask_question_gpt4o", None)
+        elif node_name.startswith("ask_question_gpt4_5"):
+            return getattr(_Node_Processes, "_process_ask_question_gpt4_5", None)
+        elif node_name.startswith("render_dall_e_2"):
+            return getattr(_Node_Processes, "_process_render_dall_e_2", None)
+        elif node_name.startswith("render_dall_e_3"):
+            return getattr(_Node_Processes, "_process_render_dall_e_3", None)
+        elif node_name.startswith("custom_"):
+            return getattr(_Node_Processes, "_process_custom_node", None)
+
+        # Some nodes do not have a direct "handler" function (like 'merge')
+        if node_name == "merge":
+            return None
+
+        # CV / text utilities
+        if node_name in ["tailorcv", "coverletter", "reviewcv", "perfectcv"]:
+            method_name = f"_process_{node_name}"
+            return getattr(_Node_Processes, method_name, None)
+
+        if node_name in ["sum_text", "reco", "extract_ints", "extract_emails", "extract_phones"]:
+            method_name = f"_process_{node_name}"
+            return getattr(_Node_Processes, method_name, None)
+
+        # Fallback to selected_handler in node_config
+        config = self._lookup_node_config(node_id)
+        if config and "selected_handler" in config:
+            fallback_method = f"_process_{config['selected_handler']}"
+            if hasattr(_Node_Processes, fallback_method):
+                return getattr(_Node_Processes, fallback_method)
+
+        # If we get here, we found no match
+        self.event_log += f"\nWarning: No handler found for node: {node_id}"
+        return None
+
+    def _get_credit_cost(self, node_id):
+        config = self._lookup_node_config(node_id)
+        if config is not None:
+            return config.get("credit_cost", 0)
+        return 0
+
+    # --------------------------------------------------------------------------
+    # Merge logic in a separate method
+    # --------------------------------------------------------------------------
+    # def _merge_parent_outputs(self, parent_texts):
+    #     """
+    #     For a 'merge' node, combine multiple parent outputs into one string.
+    #     Currently, it just uses a distinctive delimiter, but you can
+    #     modify this logic as desired in the future.
+    #     """
+    #     return "\n\n---- ---- ---- ---- ---- ---- ---- ----\n---- ---- ---- ---- ---- ---- ---- ----\n\n".join(parent_texts)
+
+
+    def _merge_parent_outputs(self, parent_ids, node_outputs):
+        """
+        Sorts parent_ids by their node's y-position and returns a merged string.
+        """
+        # 1) Sort the parent node IDs by their y-position
+        sorted_parent_ids = sorted(parent_ids, key=lambda pid: self._get_node_pos_y(pid))
+
+        # 2) Gather their outputs in that order
+        sorted_texts = [node_outputs.get(pid, "") for pid in sorted_parent_ids]
+
+        # 3) Join them with a distinctive delimiter
+        return "\n\n---- ---- ---- ---- ---- ---- ---- ----\n---- ---- ---- ---- ---- ---- ---- ----\n\n".join(sorted_texts)
+
+
+    # --------------------------------------------------------------------------
+    # Main DAG processing
+    # --------------------------------------------------------------------------
+    def process(self):
+
+        print("Received node names:", self.process_steps.get("node_names", {}))
+        no_chain_msg = "You need to create a line chain from input to output!"
+        """
+        Steps:
+          1) BFS forward from 'input_text' & BFS backward from 'output_text'.
+          2) Build a subgraph of nodes that are on a path from input->output.
+          3) Do a partial topological sort of that subgraph (ignore cycles).
+          4) For each node in that sorted list:
+             - Gather parent outputs
+             - If 'merge' node, call _merge_parent_outputs()
+             - Otherwise join them or single text
+             - Call the appropriate node handler
+          5) Return node_outputs["output_text"] if it exists, else last node's output.
+        """
+        adjacency = self.process_steps.get("adj_list", {})
+        node_names = self.process_steps.get("node_names", {})
+
+        # 1) BFS forward from input_text, BFS backward from output_text
+        forward_reachable = self._bfs_forward(adjacency, "input_text")
+        backward_reachable = self._bfs_backward(adjacency, "output_text")
+
+        # 2) Intersection = valid subgraph
+        valid_nodes = forward_reachable & backward_reachable
+        sub_adj = {}
+        for node, children in adjacency.items():
+            if node in valid_nodes:
+                sub_adj[node] = [c for c in children if c in valid_nodes]
+
+        # 3) partial topological sort
+        topo_order = self._partial_topo_sort(sub_adj)
+        if not topo_order:
+            self.event_log += f"\n{no_chain_msg}"
+            return {
+                "processedText": no_chain_msg,
+                "event": self.event_log
+            }
+
+        node_outputs = {}
+        node_outputs["input_text"] = self.original_text
+
+        # 4) process in partial topo order
+        for node_id in topo_order:
+            if node_id == "input_text":
+                continue
+
+            # Gather parent outputs
+            parent_nodes = [p for p, kids in sub_adj.items() if node_id in kids]
+            parent_texts = [node_outputs.get(p, "") for p in parent_nodes]
+            node_label = self._get_node_name(node_id)
+            if node_label == "merge":
+                #combined_input = self._merge_parent_outputs(parent_texts)
+                combined_input = self._merge_parent_outputs(parent_nodes, node_outputs)
+            else:
+                if len(parent_texts) > 1:
+                    combined_input = "\n".join(parent_texts)
+                else:
+                    combined_input = parent_texts[0] if parent_texts else ""
+
+
+
+            # Reset working state for this node
+            self.processed_text = combined_input
+            self.image_url = None
+
+            handler = self._get_handler_for_node(node_id)
+            cost = self._get_credit_cost(node_id)
+
+            if handler:
+                try:
+                    handler(self, node_id)
+                    self.total_credits_to_deduct += cost
+                    result = self.image_url if self.image_url else self.processed_text
+                except Exception as ex:
+                    self.event_log += f"\nError processing {node_id}: {str(ex)}"
+                    result = f"Error in {node_id}"
+            else:
+                # No handler means pass-through
+                self.event_log += f"\nNo handler for node: {node_id}"
+                result = self.processed_text
+
+            node_outputs[node_id] = result
+
+            # Clear state
+            self.processed_text = None
+            self.image_url = None
+
+        # 5) final output
+        if "output_text" in node_outputs:
+            final_output = node_outputs["output_text"]
+        else:
+            last_node = topo_order[-1]
+            final_output = node_outputs.get(last_node, no_chain_msg)
+
+        return {
+            'processedText': final_output,
+            'event': self.event_log
+        }
+
+    # --------------------------------------------------------------------------
+    # (Optional) credit updates and saving images
+    # --------------------------------------------------------------------------
+    def _update_credits(self):
+        current_credits = self.session.get('credits', 0)
+        new_credits = current_credits - self.total_credits_to_deduct
+        if new_credits < 0:
+            new_credits = 0
+
+        update_url = "http://LoginManager.pythonanywhere.com/update-user-credits"
+        admin_secret = os.getenv('CRED_SECRET')
+        payload = {
+            "email": self.session.get('email'),
+            "domain": self.session.get('domain'),
+            "new_credits": new_credits
+        }
+        params = {"secret": admin_secret}
+
+        try:
+            response = requests.post(update_url, json=payload, params=params)
+            if response.status_code == 200:
+                self.event_log += "\nCredits updated successfully via microservice."
+                self.session['credits'] = new_credits
+            else:
+                self.event_log += f"\nFailed to update credits via microservice: {response.text}"
+        except Exception as e:
+            ts = self.time_functions.convert_unixtime(int(time.time()))
+            self.event_log += f"\n{ts} | ERROR | Updating credits failed: {str(e)}"
+
+    def _save_generated_images(self):
+        """
+        If self.image_url was set by a node (e.g. _process_render_dall_e_3),
+        store it in generated_images.json for the user.
+        """
+        if self.image_url:
+            json_file_path = os.path.join(self.user_dir, 'generated_images.json')
+            images_data = []
+            if os.path.exists(json_file_path):
+                with open(json_file_path, 'r') as file:
+                    images_data = json.load(file)
+            else:
+                os.makedirs(self.user_dir, exist_ok=True)
+            timestamp = str(int(time.time()))
+            images_data.append({"timestamp": timestamp, "image_url": self.image_url})
+            with open(json_file_path, 'w') as file:
+                json.dump(images_data, file, indent=4)
