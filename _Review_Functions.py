@@ -5,16 +5,20 @@ from datetime import datetime
 
 class CodeAggregator:
     def __init__(self, root_dir='.', output_filename='project_directory_full_code.txt',
-                 compact=False, excluded_extensions=None, description_text=""):
+                 compact=False, excluded_extensions=None, include_files=None, exclude_files=None,
+                 description_text=""):
         self.root_dir = Path(root_dir)
         self.output_filename = output_filename
         self.compact = compact
         # Set excluded extensions; if none provided, use an empty list
         self.excluded_extensions = excluded_extensions if excluded_extensions is not None else []
+        # Set include/exclude file lists; if none provided, use empty lists
+        self.include_files = include_files if include_files is not None else []
+        self.exclude_files = exclude_files if exclude_files is not None else []
         self.description_text = description_text
 
     def append_file_content(self, content_list, file_path):
-        header = f"\no_o #### #### #### #### This file: {file_path} #### #### #### #### Contents:\n\n"
+        header = f"\no_o This file: {file_path} | Contents:\n\n"
         try:
             file_content = file_path.read_text(encoding='utf-8')
         except Exception as e:
@@ -78,11 +82,19 @@ class CodeAggregator:
             # Skip the aggregator file itself
             if file.resolve() == current_file:
                 continue
-            # Exclude files with extensions in the excluded list
-            if file.suffix in self.excluded_extensions:
+            # Ensure it's a file
+            if not file.is_file():
                 continue
-            # Check if file is in the allowed extensions list and is a file
-            if file.suffix in extensions and file.is_file():
+
+            # Skip if the file is explicitly excluded by its filename
+            if file.name in self.exclude_files:
+                continue
+
+            # If the file is explicitly included by its filename, include regardless of extension.
+            if file.name in self.include_files:
+                self.append_file_content(contents, file)
+            # Otherwise, include only if its extension is allowed and not excluded.
+            elif file.suffix in extensions and file.suffix not in self.excluded_extensions:
                 self.append_file_content(contents, file)
         return contents
 
@@ -117,24 +129,24 @@ class CodeAggregator:
             header = f"Description:\n{self.description_text}\n\nAggregated on: {timestamp}\n{'=' * 80}\n\n"
             contents.insert(0, header)
 
-        # Append how_it_works.txt at the very end if it exists in the project root directory.
-        how_it_works_file = self.root_dir / 'how_it_works.txt'
-        if how_it_works_file.exists() and how_it_works_file.is_file():
-            contents.append("\n" + "=" * 80 + "\n")
-            self.append_file_content(contents, how_it_works_file)
-
         # Write all aggregated content into one text file
         with open(self.output_filename, 'w', encoding='utf-8') as output_file:
             output_file.write("\n".join(contents))
 
 if __name__ == "__main__":
-    # Example: exclude .css files from aggregation and add a multiline description header.
+    # Example settings: exclude .css and .json files by extension,
+    # include specific files by exact filename, and exclude certain filenames.
     multiline_description = (
         "This is the Nodes-GPT project.\n"
         "Like Nuke with video editing, it allows node based AI operations to be carried out for fun possibilities.\n"
-        "For the duration of this chat o_o will signify separation, between files, or between text and user queries, and ^_^ is where you should focus, where the main task is."
+        "For the duration of this chat o_o will symbolize separation, i.e. between different files, or text and user queries.\n"
+        "^_^ will be the symbol that tells you where your main task to solve is, if it exists."
     )
-    aggregator = CodeAggregator(compact=True, excluded_extensions=['.css','.html'],
+    aggregator = CodeAggregator(compact=True,
+                                excluded_extensions=['.json', '.css'],
+                                include_files=['how_it_works.txt'],
+                                exclude_files=['credits.js','copy_clear_etc.js','image_strip.js','simulate_move.js','resize_input.js',\
+                                'resize_output.js','cv.js','upload_files.js','_Image_Functions.py'],
                                 description_text=multiline_description)
     aggregator.aggregate()
     print(f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')} - Aggregated code has been written to {aggregator.output_filename}")
