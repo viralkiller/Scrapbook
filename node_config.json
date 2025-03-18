@@ -1,0 +1,642 @@
+{
+  "input_text": {
+    "visible": {
+      "default": true,
+      "last": "na"
+    },
+    "pos_x": {
+      "default": 40,
+      "last": "na"
+    },
+    "pos_y": {
+      "default": 100,
+      "last": "na"
+    },
+    "size_w": {
+      "default": 340,
+      "last": "na"
+    },
+    "size_h": {
+      "default": 300,
+      "last": "na"
+    },
+    "color": {
+      "default": "#5599cc",
+      "last": "na"
+    },
+    "background_color": {
+      "default": "#5599cc",
+      "last": "na"
+    },
+    "opacity": {
+      "default": 0.8,
+      "last": "na"
+    },
+    "credit_cost": 0,
+    "per_char_cost": 0,
+    "input_conns_allowed": 0,
+    "output_conns_allowed": -1,
+    "input_port_block": [],
+    "output_port_block": [],
+    "instances_allowed": 0,
+    "extras": {
+      "description": "Master input node"
+    }
+  },
+  "output_text": {
+    "visible": {
+      "default": true,
+      "last": "na"
+    },
+    "pos_x": {
+      "default": 1200,
+      "last": "na"
+    },
+    "pos_y": {
+      "default": 100,
+      "last": "na"
+    },
+    "size_w": {
+      "default": 340,
+      "last": "na"
+    },
+    "size_h": {
+      "default": 300,
+      "last": "na"
+    },
+    "color": {
+      "default": "#5599cc",
+      "last": "na"
+    },
+    "background_color": {
+      "default": "#5599cc",
+      "last": "na"
+    },
+    "opacity": {
+      "default": 0.8,
+      "last": "na"
+    },
+    "credit_cost": 0,
+    "per_char_cost": 0,
+    "input_conns_allowed": 1,
+    "output_conns_allowed": 0,
+    "input_port_block": [],
+    "output_port_block": [],
+    "instances_allowed": 0,
+    "extras": {
+      "description": "Master output node"
+    }
+  },
+  "node_session_mem": {
+    "visible": {
+      "default": true,
+      "last": "na"
+    },
+    "pos_x": {
+      "default": 700,
+      "last": "na"
+    },
+    "pos_y": {
+      "default": 180,
+      "last": "na"
+    },
+    "size_w": {
+      "default": 220,
+      "last": "na"
+    },
+    "size_h": {
+      "default": 140,
+      "last": "na"
+    },
+    "color": {
+      "default": "#777777",
+      "last": "na"
+    },
+    "background_color": {
+      "default": "#777777",
+      "last": "na"
+    },
+    "opacity": {
+      "default": 0.8,
+      "last": "na"
+    },
+    "credit_cost": 0,
+    "per_char_cost": 0,
+    "input_conns_allowed": 1,
+    "output_conns_allowed": 1,
+    "input_port_block": [],
+    "output_port_block": [],
+    "instances_allowed": 5,
+    "extras": {
+      "description": "Pulls up the session chat memory"
+    }
+  },
+  "node_ask_question": {
+    "visible": {
+      "default": true,
+      "last": "na"
+    },
+    "pos_x": {
+      "default": 500,
+      "last": "na"
+    },
+    "pos_y": {
+      "default": 180,
+      "last": "na"
+    },
+    "size_w": {
+      "default": 220,
+      "last": "na"
+    },
+    "size_h": {
+      "default": 140,
+      "last": "na"
+    },
+    "color": {
+      "default": "#777777",
+      "last": "na"
+    },
+    "background_color": {
+      "default": "#5599cc",
+      "last": "na"
+    },
+    "opacity": {
+      "default": 0.8,
+      "last": "na"
+    },
+    "credit_cost": 1,
+    "per_char_cost": 0.001,
+    "input_conns_allowed": 1,
+    "output_conns_allowed": 1,
+    "input_port_block": [],
+    "output_port_block": [],
+    "instances_allowed": 3,
+    "selected_handler": "ask_question_gpt4o",
+    "dropdown_options": [
+      "ask_question_gpt4o",
+      "ask_question_gpt4_5",
+      "ask_question_claude",
+      "ask_question_claude_think"
+    ],
+    "extras": {
+      "description": "Ask an LLM a question"
+    }
+  },
+  "node_custom": {
+    "visible": {
+      "default": true,
+      "last": "na"
+    },
+    "pos_x": {
+      "default": 500,
+      "last": "na"
+    },
+    "pos_y": {
+      "default": 280,
+      "last": "na"
+    },
+    "size_w": {
+      "default": 220,
+      "last": "na"
+    },
+    "size_h": {
+      "default": 140,
+      "last": "na"
+    },
+    "color": {
+      "default": "#c9691a",
+      "last": "na"
+    },
+    "background_color": {
+      "default": "#c9691a",
+      "last": "na"
+    },
+    "opacity": {
+      "default": 0.8,
+      "last": "na"
+    },
+    "credit_cost": 1,
+    "per_char_cost": 0.001,
+    "input_conns_allowed": 1,
+    "output_conns_allowed": 1,
+    "input_port_block": [],
+    "output_port_block": [],
+    "instances_allowed": 0,
+    "extras": {
+      "description": "Custom node with user-defined instructions"
+    }
+  },
+  "node_merge": {
+    "visible": {
+      "default": true,
+      "last": "na"
+    },
+    "pos_x": {
+      "default": 750,
+      "last": "na"
+    },
+    "pos_y": {
+      "default": 180,
+      "last": "na"
+    },
+    "size_w": {
+      "default": 200,
+      "last": "na"
+    },
+    "size_h": {
+      "default": 120,
+      "last": "na"
+    },
+    "color": {
+      "default": "#aaaaaa",
+      "last": "na"
+    },
+    "background_color": {
+      "default": "#aaaaaa",
+      "last": "na"
+    },
+    "opacity": {
+      "default": 0.8,
+      "last": "na"
+    },
+    "credit_cost": 0,
+    "per_char_cost": 0,
+    "input_conns_allowed": -1,
+    "output_conns_allowed": 1,
+    "input_port_block": [],
+    "output_port_block": [],
+    "instances_allowed": 0,
+    "extras": {
+      "description": "Merge node to combine multiple inputs"
+    }
+  },
+  "node_tailorcv": {
+    "visible": {
+      "default": false,
+      "last": "na"
+    },
+    "pos_x": {
+      "default": 520,
+      "last": "na"
+    },
+    "pos_y": {
+      "default": 300,
+      "last": "na"
+    },
+    "size_w": {
+      "default": 220,
+      "last": "na"
+    },
+    "size_h": {
+      "default": 140,
+      "last": "na"
+    },
+    "color": {
+      "default": "#777777",
+      "last": "na"
+    },
+    "background_color": {
+      "default": "#777777",
+      "last": "na"
+    },
+    "opacity": {
+      "default": 0.8,
+      "last": "na"
+    },
+    "credit_cost": 1,
+    "per_char_cost": 0.001,
+    "input_conns_allowed": 1,
+    "output_conns_allowed": 1,
+    "input_port_block": [],
+    "output_port_block": [],
+    "instances_allowed": 0,
+    "selected_handler": "tailorcv",
+    "dropdown_options": [
+      "tailorcv",
+      "coverletter",
+      "reviewcv",
+      "perfectcv"
+    ],
+    "extras": {
+      "description": "Tailor your CV based on provided job requirements"
+    }
+  },
+  "node_vision": {
+    "visible": {
+      "default": true,
+      "last": "na"
+    },
+    "pos_x": {
+      "default": 300,
+      "last": "na"
+    },
+    "pos_y": {
+      "default": 500,
+      "last": "na"
+    },
+    "size_w": {
+      "default": 220,
+      "last": "na"
+    },
+    "size_h": {
+      "default": 160,
+      "last": "na"
+    },
+    "color": {
+      "default": "#9d64a3",
+      "last": "na"
+    },
+    "background_color": {
+      "default": "#9d64a3",
+      "last": "na"
+    },
+    "opacity": {
+      "default": 0.8,
+      "last": "na"
+    },
+    "credit_cost": 1,
+    "per_char_cost": 0.001,
+    "input_conns_allowed": 1,
+    "output_conns_allowed": 1,
+    "input_port_block": [],
+    "output_port_block": [],
+    "instances_allowed": 0,
+    "extras": {
+      "description": "Analyze an image input using a model"
+    }
+  },
+  "node_translate": {
+    "visible": {
+      "default": true,
+      "last": "na"
+    },
+    "pos_x": {
+      "default": 520,
+      "last": "na"
+    },
+    "pos_y": {
+      "default": 420,
+      "last": "na"
+    },
+    "size_w": {
+      "default": 220,
+      "last": "na"
+    },
+    "size_h": {
+      "default": 140,
+      "last": "na"
+    },
+    "color": {
+      "default": "#4d6682",
+      "last": "na"
+    },
+    "background_color": {
+      "default": "#4d6682",
+      "last": "na"
+    },
+    "opacity": {
+      "default": 0.8,
+      "last": "na"
+    },
+    "credit_cost": 1,
+    "per_char_cost": 0.001,
+    "input_conns_allowed": 1,
+    "output_conns_allowed": 1,
+    "input_port_block": [],
+    "output_port_block": [],
+    "instances_allowed": 3,
+    "selected_handler": "translate_japanese",
+    "dropdown_options": [
+      "translate_japanese",
+      "translate_english",
+      "translate_french",
+      "translate_arabic",
+      "translate_german",
+      "translate_russian",
+      "translate_spanish",
+      "translate_dutch",
+      "translate_finnish",
+      "translate_turkish",
+      "translate_chinese",
+      "translate_italian",
+      "translate_swedish",
+      "translate_portuguese",
+      "translate_korean",
+      "translate_polish",
+      "translate_hungarian",
+      "translate_thai",
+      "translate_czech",
+      "translate_indonesian"
+    ],
+    "extras": {
+      "description": "Translate text into different languages"
+    }
+  },
+  "node_render_dall_e_3": {
+    "visible": {
+      "default": true,
+      "last": "na"
+    },
+    "pos_x": {
+      "default": 700,
+      "last": "na"
+    },
+    "pos_y": {
+      "default": 400,
+      "last": "na"
+    },
+    "size_w": {
+      "default": 220,
+      "last": "na"
+    },
+    "size_h": {
+      "default": 140,
+      "last": "na"
+    },
+    "color": {
+      "default": "#1d7513",
+      "last": "na"
+    },
+    "background_color": {
+      "default": "#1d7513",
+      "last": "na"
+    },
+    "opacity": {
+      "default": 0.8,
+      "last": "na"
+    },
+    "credit_cost": 1,
+    "per_char_cost": 0.001,
+    "input_conns_allowed": 1,
+    "output_conns_allowed": 1,
+    "input_port_block": [],
+    "output_port_block": [],
+    "instances_allowed": 0,
+    "selected_handler": "render_dall_e_3",
+    "dropdown_options": [
+      "render_dall_e_3",
+      "render_dall_e_2"
+    ],
+    "extras": {
+      "description": "Generate an image using a model"
+    }
+  },
+  "node_art_styles": {
+    "visible": {
+      "default": true,
+      "last": "na"
+    },
+    "pos_x": {
+      "default": 720,
+      "last": "na"
+    },
+    "pos_y": {
+      "default": 420,
+      "last": "na"
+    },
+    "size_w": {
+      "default": 220,
+      "last": "na"
+    },
+    "size_h": {
+      "default": 140,
+      "last": "na"
+    },
+    "color": {
+      "default": "#1d7513",
+      "last": "na"
+    },
+    "background_color": {
+      "default": "#1d7513",
+      "last": "na"
+    },
+    "opacity": {
+      "default": 0.8,
+      "last": "na"
+    },
+    "credit_cost": 0,
+    "per_char_cost": 0,
+    "input_conns_allowed": 1,
+    "output_conns_allowed": 1,
+    "input_port_block": [],
+    "output_port_block": [],
+    "instances_allowed": 0,
+    "selected_handler": "art_styles",
+    "dropdown_options": [
+      "art_styles",
+      "render_cartoon_90s",
+      "render_pencil",
+      "render_color_pencil",
+      "render_anime",
+      "render_gn_80s",
+      "render_game_90s",
+      "render_minecraft",
+      "render_frida",
+      "render_timburton",
+      "render_blake",
+      "render_salvadordali",
+      "render_picasso"
+    ],
+    "extras": {
+      "description": "Apply an art style to the image"
+    }
+  },
+  "node_sum_text": {
+    "visible": {
+      "default": false,
+      "last": "na"
+    },
+    "pos_x": {
+      "default": 750,
+      "last": "na"
+    },
+    "pos_y": {
+      "default": 320,
+      "last": "na"
+    },
+    "size_w": {
+      "default": 220,
+      "last": "na"
+    },
+    "size_h": {
+      "default": 140,
+      "last": "na"
+    },
+    "color": {
+      "default": "#777777",
+      "last": "na"
+    },
+    "background_color": {
+      "default": "#777777",
+      "last": "na"
+    },
+    "opacity": {
+      "default": 0.8,
+      "last": "na"
+    },
+    "credit_cost": 1,
+    "per_char_cost": 0.001,
+    "input_conns_allowed": 1,
+    "output_conns_allowed": 1,
+    "input_port_block": [],
+    "output_port_block": [],
+    "instances_allowed": 0,
+    "selected_handler": "sum_text",
+    "dropdown_options": [
+      "sum_text",
+      "reword_text",
+      "reco_text",
+      "anti_chatgpt",
+      "extract_ints",
+      "extract_emails",
+      "extract_phones"
+    ],
+    "extras": {
+      "description": "Various text operations"
+    }
+  },
+  "node_email_me": {
+    "visible": {
+      "default": true,
+      "last": "na"
+    },
+    "pos_x": {
+      "default": 800,
+      "last": "na"
+    },
+    "pos_y": {
+      "default": 600,
+      "last": "na"
+    },
+    "size_w": {
+      "default": 220,
+      "last": "na"
+    },
+    "size_h": {
+      "default": 140,
+      "last": "na"
+    },
+    "color": {
+      "default": "#444444",
+      "last": "na"
+    },
+    "background_color": {
+      "default": "#444444",
+      "last": "na"
+    },
+    "opacity": {
+      "default": 0.8,
+      "last": "na"
+    },
+    "credit_cost": 0,
+    "per_char_cost": 0,
+    "input_conns_allowed": 1,
+    "output_conns_allowed": 1,
+    "input_port_block": [],
+    "output_port_block": [],
+    "instances_allowed": 0,
+    "extras": {
+      "description": "Emails the output content to the user"
+    }
+  }
+}
