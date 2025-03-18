@@ -33,7 +33,7 @@
       "last": "na"
     },
     "credit_cost": 0,
-    "per_char_cost": 0,
+    "per_token_cost": 0,
     "input_conns_allowed": 0,
     "output_conns_allowed": -1,
     "input_port_block": [],
@@ -77,7 +77,7 @@
       "last": "na"
     },
     "credit_cost": 0,
-    "per_char_cost": 0,
+    "per_token_cost": 0,
     "input_conns_allowed": 1,
     "output_conns_allowed": 0,
     "input_port_block": [],
@@ -121,7 +121,7 @@
       "last": "na"
     },
     "credit_cost": 0,
-    "per_char_cost": 0,
+    "per_token_cost": 0,
     "input_conns_allowed": 1,
     "output_conns_allowed": 1,
     "input_port_block": [],
@@ -164,20 +164,36 @@
       "default": 0.8,
       "last": "na"
     },
-    "credit_cost": 1,
-    "per_char_cost": 0.001,
     "input_conns_allowed": 1,
     "output_conns_allowed": 1,
     "input_port_block": [],
     "output_port_block": [],
     "instances_allowed": 3,
-    "selected_handler": "ask_question_gpt4o",
     "dropdown_options": [
       "ask_question_gpt4o",
       "ask_question_gpt4_5",
       "ask_question_claude",
       "ask_question_claude_think"
     ],
+    "pricing": {
+      "ask_question_gpt4o": {
+        "base_cost": 5,
+        "per_token_cost": 0.001
+      },
+      "ask_question_gpt4_5": {
+        "base_cost": 7,
+        "per_token_cost": 0.0012
+      },
+      "ask_question_claude": {
+        "base_cost": 6,
+        "per_token_cost": 0.0011
+      },
+      "ask_question_claude_think": {
+        "base_cost": 8,
+        "per_token_cost": 0.0013
+      }
+    },
+    "default_model": "ask_question_gpt4o",
     "extras": {
       "description": "Ask an LLM a question"
     }
@@ -215,8 +231,8 @@
       "default": 0.8,
       "last": "na"
     },
-    "credit_cost": 1,
-    "per_char_cost": 0.001,
+    "credit_cost": 10,
+    "per_token_cost": 1,
     "input_conns_allowed": 1,
     "output_conns_allowed": 1,
     "input_port_block": [],
@@ -260,7 +276,7 @@
       "last": "na"
     },
     "credit_cost": 0,
-    "per_char_cost": 0,
+    "per_token_cost": 0,
     "input_conns_allowed": -1,
     "output_conns_allowed": 1,
     "input_port_block": [],
@@ -303,20 +319,31 @@
       "default": 0.8,
       "last": "na"
     },
-    "credit_cost": 1,
-    "per_char_cost": 0.001,
-    "input_conns_allowed": 1,
-    "output_conns_allowed": 1,
-    "input_port_block": [],
-    "output_port_block": [],
-    "instances_allowed": 0,
-    "selected_handler": "tailorcv",
     "dropdown_options": [
       "tailorcv",
       "coverletter",
       "reviewcv",
       "perfectcv"
     ],
+    "pricing": {
+      "tailorcv": {
+        "base_cost": 10,
+        "per_token_cost": 0.0015
+      },
+      "coverletter": {
+        "base_cost": 12,
+        "per_token_cost": 0.0017
+      },
+      "reviewcv": {
+        "base_cost": 11,
+        "per_token_cost": 0.0016
+      },
+      "perfectcv": {
+        "base_cost": 13,
+        "per_token_cost": 0.0018
+      }
+    },
+    "default_model": "tailorcv",
     "extras": {
       "description": "Tailor your CV based on provided job requirements"
     }
@@ -354,8 +381,8 @@
       "default": 0.8,
       "last": "na"
     },
-    "credit_cost": 1,
-    "per_char_cost": 0.001,
+    "credit_cost": 10,
+    "per_token_cost": 1,
     "input_conns_allowed": 1,
     "output_conns_allowed": 1,
     "input_port_block": [],
@@ -398,14 +425,6 @@
       "default": 0.8,
       "last": "na"
     },
-    "credit_cost": 1,
-    "per_char_cost": 0.001,
-    "input_conns_allowed": 1,
-    "output_conns_allowed": 1,
-    "input_port_block": [],
-    "output_port_block": [],
-    "instances_allowed": 3,
-    "selected_handler": "translate_japanese",
     "dropdown_options": [
       "translate_japanese",
       "translate_english",
@@ -428,6 +447,29 @@
       "translate_czech",
       "translate_indonesian"
     ],
+    "pricing": {
+      "translate_japanese": { "base_cost": 8, "per_token_cost": 0.001 },
+      "translate_english": { "base_cost": 7, "per_token_cost": 0.0009 },
+      "translate_french": { "base_cost": 8, "per_token_cost": 0.001 },
+      "translate_arabic": { "base_cost": 9, "per_token_cost": 0.0011 },
+      "translate_german": { "base_cost": 8, "per_token_cost": 0.001 },
+      "translate_russian": { "base_cost": 9, "per_token_cost": 0.0011 },
+      "translate_spanish": { "base_cost": 8, "per_token_cost": 0.001 },
+      "translate_dutch": { "base_cost": 8, "per_token_cost": 0.001 },
+      "translate_finnish": { "base_cost": 9, "per_token_cost": 0.0011 },
+      "translate_turkish": { "base_cost": 9, "per_token_cost": 0.0011 },
+      "translate_chinese": { "base_cost": 10, "per_token_cost": 0.0012 },
+      "translate_italian": { "base_cost": 8, "per_token_cost": 0.001 },
+      "translate_swedish": { "base_cost": 9, "per_token_cost": 0.0011 },
+      "translate_portuguese": { "base_cost": 8, "per_token_cost": 0.001 },
+      "translate_korean": { "base_cost": 10, "per_token_cost": 0.0012 },
+      "translate_polish": { "base_cost": 9, "per_token_cost": 0.0011 },
+      "translate_hungarian": { "base_cost": 9, "per_token_cost": 0.0011 },
+      "translate_thai": { "base_cost": 10, "per_token_cost": 0.0012 },
+      "translate_czech": { "base_cost": 9, "per_token_cost": 0.0011 },
+      "translate_indonesian": { "base_cost": 8, "per_token_cost": 0.001 }
+    },
+    "default_model": "translate_japanese",
     "extras": {
       "description": "Translate text into different languages"
     }
@@ -465,18 +507,21 @@
       "default": 0.8,
       "last": "na"
     },
-    "credit_cost": 1,
-    "per_char_cost": 0.001,
-    "input_conns_allowed": 1,
-    "output_conns_allowed": 1,
-    "input_port_block": [],
-    "output_port_block": [],
-    "instances_allowed": 0,
-    "selected_handler": "render_dall_e_3",
     "dropdown_options": [
       "render_dall_e_3",
       "render_dall_e_2"
     ],
+    "pricing": {
+      "render_dall_e_3": {
+        "base_cost": 20,
+        "per_token_cost": 0.002
+      },
+      "render_dall_e_2": {
+        "base_cost": 18,
+        "per_token_cost": 0.0018
+      }
+    },
+    "default_model": "render_dall_e_3",
     "extras": {
       "description": "Generate an image using a model"
     }
@@ -514,14 +559,6 @@
       "default": 0.8,
       "last": "na"
     },
-    "credit_cost": 0,
-    "per_char_cost": 0,
-    "input_conns_allowed": 1,
-    "output_conns_allowed": 1,
-    "input_port_block": [],
-    "output_port_block": [],
-    "instances_allowed": 0,
-    "selected_handler": "art_styles",
     "dropdown_options": [
       "art_styles",
       "render_cartoon_90s",
@@ -537,6 +574,22 @@
       "render_salvadordali",
       "render_picasso"
     ],
+    "pricing": {
+      "art_styles": { "base_cost": 2, "per_token_cost": 0.0005 },
+      "render_cartoon_90s": { "base_cost": 2, "per_token_cost": 0.0005 },
+      "render_pencil": { "base_cost": 2, "per_token_cost": 0.0005 },
+      "render_color_pencil": { "base_cost": 2, "per_token_cost": 0.0005 },
+      "render_anime": { "base_cost": 2, "per_token_cost": 0.0005 },
+      "render_gn_80s": { "base_cost": 2, "per_token_cost": 0.0005 },
+      "render_game_90s": { "base_cost": 2, "per_token_cost": 0.0005 },
+      "render_minecraft": { "base_cost": 2, "per_token_cost": 0.0005 },
+      "render_frida": { "base_cost": 2, "per_token_cost": 0.0005 },
+      "render_timburton": { "base_cost": 2, "per_token_cost": 0.0005 },
+      "render_blake": { "base_cost": 2, "per_token_cost": 0.0005 },
+      "render_salvadordali": { "base_cost": 2, "per_token_cost": 0.0005 },
+      "render_picasso": { "base_cost": 2, "per_token_cost": 0.0005 }
+    },
+    "default_model": "art_styles",
     "extras": {
       "description": "Apply an art style to the image"
     }
@@ -574,14 +627,6 @@
       "default": 0.8,
       "last": "na"
     },
-    "credit_cost": 1,
-    "per_char_cost": 0.001,
-    "input_conns_allowed": 1,
-    "output_conns_allowed": 1,
-    "input_port_block": [],
-    "output_port_block": [],
-    "instances_allowed": 0,
-    "selected_handler": "sum_text",
     "dropdown_options": [
       "sum_text",
       "reword_text",
@@ -591,6 +636,16 @@
       "extract_emails",
       "extract_phones"
     ],
+    "pricing": {
+      "sum_text": { "base_cost": 10, "per_token_cost": 0.001 },
+      "reword_text": { "base_cost": 10, "per_token_cost": 0.001 },
+      "reco_text": { "base_cost": 10, "per_token_cost": 0.001 },
+      "anti_chatgpt": { "base_cost": 10, "per_token_cost": 0.001 },
+      "extract_ints": { "base_cost": 5, "per_token_cost": 0.0005 },
+      "extract_emails": { "base_cost": 5, "per_token_cost": 0.0005 },
+      "extract_phones": { "base_cost": 5, "per_token_cost": 0.0005 }
+    },
+    "default_model": "sum_text",
     "extras": {
       "description": "Various text operations"
     }
@@ -629,7 +684,7 @@
       "last": "na"
     },
     "credit_cost": 0,
-    "per_char_cost": 0,
+    "per_token_cost": 0,
     "input_conns_allowed": 1,
     "output_conns_allowed": 1,
     "input_port_block": [],
