@@ -139,14 +139,15 @@ if __name__ == "__main__":
     multiline_description = (
         "This is the Nodes-GPT project.\n"
         "Like Nuke with video editing, it allows node based AI operations to be carried out for fun possibilities.\n"
-        "For the duration of this chat o_o will symbolize separation, i.e. between different files, or text and user queries.\n"
-        "^_^ will be the symbol that tells you where your main task to solve is, if it exists."
+        "Some project files may be left out as they don't pertain to the task.\n"
     )
     aggregator = CodeAggregator(compact=True,
-                                excluded_extensions=['.json', '.css'],
+                                excluded_extensions=['.css'],
                                 include_files=['how_it_works.txt'],
                                 exclude_files=['credits.js','copy_clear_etc.js','image_strip.js','simulate_move.js','resize_input.js',\
-                                'resize_output.js','cv.js','upload_files.js','_Image_Functions.py'],
+                                'resize_output.js','cv.js','upload_files.js','_Image_Functions.py','_AESCipher.py','_Auth.py','_File_Functions.py',\
+                                '_Filters_Graphics.py','_Image_Functions.py','_Node_Processes.py','_Purchase_Manager.py','_Shared.py',' _Time_Functions.py','_txt_Ops.py',\
+                                'final.html', 'billing_issue.html', 'register.html', 'tiers.html', 'login.html', 'change_password.html', 'my_account.html'],
                                 description_text=multiline_description)
     aggregator.aggregate()
     print(f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')} - Aggregated code has been written to {aggregator.output_filename}")
