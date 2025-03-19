@@ -1,0 +1,128 @@
+Nodes-GPT Overview (Plain Text):
+
+4 Node Types:
+
+Master Nodes:
+Input Prompt (has one output) and Output Data (has one input).
+Always visible and resizable.
+A valid chain flows from Input Prompt through nodes to Output Data.
+(Future enhancement: merge outputs from multiple nodes.)
+Default Nodes:
+
+Pre-built nodes such as Ask Question, Analyze Image, Generate Image, Email Me, and Art Styles.
+Their toolbar icons are fixed and cannot be deleted.
+
+Instance Nodes:
+Created by cloning (using Ctrl+click).
+Useful when combining outputs from different sources (e.g., ChatGPT and Claude).
+Their palette icons include a trash icon for deletion.
+
+Custom Nodes:
+Added via the “+ Custom Node” button.
+Similar to default nodes but allow user-defined titles and descriptions.
+Their palette icons include a trash icon for deletion.
+
+Line Creation:
+Lines can only be made from an output port to an input port.
+They are created by dragging from a port; if not finalized on a valid target, the line is removed.
+Double-clicking a port deletes any attached lines.
+The logic is minimal and scalable regardless of the drawing order.
+
+Node Dragging:
+Nodes can be moved, but they cannot be dragged off-screen.
+The expanded view of custom nodes is also constrained to remain on-screen.
+
+How credits are deducted:
+Just like most LLM API models, we charge a base cost once + (cost per token * number of input tokens) + (cost per token * number of output tokens)
+_Chain_Processor.py will check to see whether the user has enough credits to run the node chain before execution. Once executed they will be charged again for the output tokens.
+However we only check: base cost once + (cost per token * number of input tokens) before allowing them to execute the chain, as we don't know how many output tokens
+will be given by the API model. If it goes over, we will absorb these costs, but obviously take any remaining credits they have.
+
+Microservices:
+
+LoginManager: Manages authentication, registration, and credits.
+AIManager: Provides AI responses using multiple language models (e.g., OpenAI, Anthropic).
+ConvertManager: Handles image and document conversions.
+EmailGateway: Manages email sending.
+
+static/json/node_config.json contains the master node configurations, creating a user account copies this template. Here is an example:
+
+"node_ask_question": {
+    "visible": {
+      "default": true,
+      "last": "na"
+    },
+    "pos_x": {
+      "default": 500,
+      "last": "na"
+    },
+    "pos_y": {
+      "default": 180,
+      "last": "na"
+    },
+    "size_w": {
+      "default": 220,
+      "last": "na"
+    },
+    "size_h": {
+      "default": 140,
+      "last": "na"
+    },
+    "color": {
+      "default": "#777777",
+      "last": "na"
+    },
+    "background_color": {
+      "default": "#5599cc",
+      "last": "na"
+    },
+    "opacity": {
+      "default": 0.8,
+      "last": "na"
+    },
+    "input_conns_allowed": 1,
+    "output_conns_allowed": 1,
+    "input_port_block": [],
+    "output_port_block": [],
+    "instances_allowed": 3,
+    "dropdown_options": [
+      "ask_question_gpt4o",
+      "ask_question_gpt4_5",
+      "ask_question_claude",
+      "ask_question_claude_think"
+    ],
+    "pricing": {
+      "ask_question_gpt4o": {
+        "base_cost": 1,
+        "per_token_cost": 0.01
+      },
+      "ask_question_gpt4_5": {
+        "base_cost": 18,
+        "per_token_cost": 0.18
+      },
+      "ask_question_claude": {
+        "base_cost": 0.38,
+        "per_token_cost": 0.0038
+      },
+      "ask_question_claude_think": {
+        "base_cost": 1.44,
+        "per_token_cost": 0.0144
+      }
+    },
+    "default_model": "ask_question_gpt4o",
+    "extras": {
+      "description": "Ask an LLM a question"
+    }
+  },
+
+
+Explanation of Specific Properties:
+
+input_conns_allowed: 0
+This means the node does not accept any incoming connections. (Typically used for the starting node, e.g., "Input Prompt".)
+
+output_conns_allowed: -1
+A value of -1 indicates an unlimited number of outgoing connections. (The node can send its output to as many nodes as needed.)
+
+instances_allowed: 0
+This means no duplicate instances of this node type are allowed. (Master nodes usually are unique and should not be cloned.)
