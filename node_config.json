@@ -131,73 +131,77 @@
       "description": "Pulls up the session chat memory"
     }
   },
-  "node_ask_question": {
-    "visible": {
-      "default": true,
-      "last": "na"
+
+
+"node_ask_question": {
+  "visible": {
+    "default": true,
+    "last": "na"
+  },
+  "pos_x": {
+    "default": 500,
+    "last": "na"
+  },
+  "pos_y": {
+    "default": 180,
+    "last": "na"
+  },
+  "size_w": {
+    "default": 220,
+    "last": "na"
+  },
+  "size_h": {
+    "default": 140,
+    "last": "na"
+  },
+  "color": {
+    "default": "#777777",
+    "last": "na"
+  },
+  "background_color": {
+    "default": "#5599cc",
+    "last": "na"
+  },
+  "opacity": {
+    "default": 0.8,
+    "last": "na"
+  },
+  "input_conns_allowed": 1,
+  "output_conns_allowed": 1,
+  "input_port_block": [],
+  "output_port_block": [],
+  "instances_allowed": 3,
+  "dropdown_options": [
+    "ask_question_gpt4o",
+    "ask_question_gpt4_5",
+    "ask_question_claude",
+    "ask_question_claude_think"
+  ],
+  "pricing": {
+    "ask_question_gpt4o": {
+      "base_cost": 1.0,
+      "per_token_cost": 0.01
     },
-    "pos_x": {
-      "default": 500,
-      "last": "na"
+    "ask_question_gpt4_5": {
+      "base_cost": 18.0,
+      "per_token_cost": 0.18
     },
-    "pos_y": {
-      "default": 180,
-      "last": "na"
+    "ask_question_claude": {
+      "base_cost": 0.38,
+      "per_token_cost": 0.0038
     },
-    "size_w": {
-      "default": 220,
-      "last": "na"
-    },
-    "size_h": {
-      "default": 140,
-      "last": "na"
-    },
-    "color": {
-      "default": "#777777",
-      "last": "na"
-    },
-    "background_color": {
-      "default": "#5599cc",
-      "last": "na"
-    },
-    "opacity": {
-      "default": 0.8,
-      "last": "na"
-    },
-    "input_conns_allowed": 1,
-    "output_conns_allowed": 1,
-    "input_port_block": [],
-    "output_port_block": [],
-    "instances_allowed": 3,
-    "dropdown_options": [
-      "ask_question_gpt4o",
-      "ask_question_gpt4_5",
-      "ask_question_claude",
-      "ask_question_claude_think"
-    ],
-    "pricing": {
-      "ask_question_gpt4o": {
-        "base_cost": 5,
-        "per_token_cost": 0.001
-      },
-      "ask_question_gpt4_5": {
-        "base_cost": 7,
-        "per_token_cost": 0.0012
-      },
-      "ask_question_claude": {
-        "base_cost": 6,
-        "per_token_cost": 0.0011
-      },
-      "ask_question_claude_think": {
-        "base_cost": 8,
-        "per_token_cost": 0.0013
-      }
-    },
-    "default_model": "ask_question_gpt4o",
-    "extras": {
-      "description": "Ask an LLM a question"
+    "ask_question_claude_think": {
+      "base_cost": 1.44,
+      "per_token_cost": 0.0144
     }
   },
+  "default_model": "ask_question_gpt4o",
+  "extras": {
+    "description": "Ask an LLM a question"
+  }
+}
+
+
   "node_custom": {
     "visible": {
       "default": true,
@@ -231,8 +235,8 @@
       "default": 0.8,
       "last": "na"
     },
-    "credit_cost": 10,
-    "per_token_cost": 1,
+    "credit_cost": 1,
+    "per_token_cost": 0.01,
     "input_conns_allowed": 1,
     "output_conns_allowed": 1,
     "input_port_block": [],
@@ -327,22 +331,30 @@
     ],
     "pricing": {
       "tailorcv": {
-        "base_cost": 10,
-        "per_token_cost": 0.0015
+        "base_cost": 2,
+        "per_token_cost": 0.01
       },
       "coverletter": {
-        "base_cost": 12,
-        "per_token_cost": 0.0017
+        "base_cost": 2,
+        "per_token_cost": 0.01
       },
       "reviewcv": {
-        "base_cost": 11,
-        "per_token_cost": 0.0016
+        "base_cost": 2,
+        "per_token_cost": 0.01
       },
       "perfectcv": {
-        "base_cost": 13,
-        "per_token_cost": 0.0018
+        "base_cost": 2,
+        "per_token_cost": 0.01
       }
     },
+
+
+    "input_conns_allowed": 1,
+    "output_conns_allowed": 1,
+    "input_port_block": [],
+    "output_port_block": [],
+    "instances_allowed": 0,
+
     "default_model": "tailorcv",
     "extras": {
       "description": "Tailor your CV based on provided job requirements"
@@ -381,8 +393,8 @@
       "default": 0.8,
       "last": "na"
     },
-    "credit_cost": 10,
-    "per_token_cost": 1,
+    "credit_cost": 1,
+    "per_token_cost": 0.01,
     "input_conns_allowed": 1,
     "output_conns_allowed": 1,
     "input_port_block": [],
@@ -392,6 +404,7 @@
       "description": "Analyze an image input using a model"
     }
   },
+
   "node_translate": {
     "visible": {
       "default": true,
@@ -448,27 +461,34 @@
       "translate_indonesian"
     ],
     "pricing": {
-      "translate_japanese": { "base_cost": 8, "per_token_cost": 0.001 },
-      "translate_english": { "base_cost": 7, "per_token_cost": 0.0009 },
-      "translate_french": { "base_cost": 8, "per_token_cost": 0.001 },
-      "translate_arabic": { "base_cost": 9, "per_token_cost": 0.0011 },
-      "translate_german": { "base_cost": 8, "per_token_cost": 0.001 },
-      "translate_russian": { "base_cost": 9, "per_token_cost": 0.0011 },
-      "translate_spanish": { "base_cost": 8, "per_token_cost": 0.001 },
-      "translate_dutch": { "base_cost": 8, "per_token_cost": 0.001 },
-      "translate_finnish": { "base_cost": 9, "per_token_cost": 0.0011 },
-      "translate_turkish": { "base_cost": 9, "per_token_cost": 0.0011 },
-      "translate_chinese": { "base_cost": 10, "per_token_cost": 0.0012 },
-      "translate_italian": { "base_cost": 8, "per_token_cost": 0.001 },
-      "translate_swedish": { "base_cost": 9, "per_token_cost": 0.0011 },
-      "translate_portuguese": { "base_cost": 8, "per_token_cost": 0.001 },
-      "translate_korean": { "base_cost": 10, "per_token_cost": 0.0012 },
-      "translate_polish": { "base_cost": 9, "per_token_cost": 0.0011 },
-      "translate_hungarian": { "base_cost": 9, "per_token_cost": 0.0011 },
-      "translate_thai": { "base_cost": 10, "per_token_cost": 0.0012 },
-      "translate_czech": { "base_cost": 9, "per_token_cost": 0.0011 },
-      "translate_indonesian": { "base_cost": 8, "per_token_cost": 0.001 }
+      "translate_japanese": { "base_cost": 1, "per_token_cost": 0.01 },
+      "translate_english": { "base_cost": 1, "per_token_cost": 0.01 },
+      "translate_french": { "base_cost": 1, "per_token_cost": 0.01 },
+      "translate_arabic": { "base_cost": 1, "per_token_cost": 0.01 },
+      "translate_german": { "base_cost": 1, "per_token_cost": 0.01 },
+      "translate_russian": { "base_cost": 1, "per_token_cost": 0.01 },
+      "translate_spanish": { "base_cost": 1, "per_token_cost": 0.01 },
+      "translate_dutch": { "base_cost": 1, "per_token_cost": 0.01 },
+      "translate_finnish": { "base_cost": 1, "per_token_cost": 0.01 },
+      "translate_turkish": { "base_cost": 1, "per_token_cost": 0.01 },
+      "translate_chinese": { "base_cost": 1, "per_token_cost": 0.01 },
+      "translate_italian": { "base_cost": 1, "per_token_cost": 0.01 },
+      "translate_swedish": { "base_cost": 1, "per_token_cost": 0.01 },
+      "translate_portuguese": { "base_cost": 1, "per_token_cost": 0.01 },
+      "translate_korean": { "base_cost": 1, "per_token_cost": 0.01 },
+      "translate_polish": { "base_cost": 1, "per_token_cost": 0.01 },
+      "translate_hungarian": { "base_cost": 1, "per_token_cost": 0.01 },
+      "translate_thai": { "base_cost": 1, "per_token_cost": 0.01 },
+      "translate_czech": { "base_cost": 1, "per_token_cost": 0.01 },
+      "translate_indonesian": { "base_cost": 1, "per_token_cost": 0.01 }
     },
+
+    "input_conns_allowed": 1,
+    "output_conns_allowed": 1,
+    "input_port_block": [],
+    "output_port_block": [],
+    "instances_allowed": 3,
+
     "default_model": "translate_japanese",
     "extras": {
       "description": "Translate text into different languages"
@@ -521,6 +541,13 @@
         "per_token_cost": 0.0018
       }
     },
+
+    "input_conns_allowed": 1,
+    "output_conns_allowed": 1,
+    "input_port_block": [],
+    "output_port_block": [],
+    "instances_allowed": 0,
+
     "default_model": "render_dall_e_3",
     "extras": {
       "description": "Generate an image using a model"
@@ -575,20 +602,27 @@
       "render_picasso"
     ],
     "pricing": {
-      "art_styles": { "base_cost": 2, "per_token_cost": 0.0005 },
-      "render_cartoon_90s": { "base_cost": 2, "per_token_cost": 0.0005 },
-      "render_pencil": { "base_cost": 2, "per_token_cost": 0.0005 },
-      "render_color_pencil": { "base_cost": 2, "per_token_cost": 0.0005 },
-      "render_anime": { "base_cost": 2, "per_token_cost": 0.0005 },
-      "render_gn_80s": { "base_cost": 2, "per_token_cost": 0.0005 },
-      "render_game_90s": { "base_cost": 2, "per_token_cost": 0.0005 },
-      "render_minecraft": { "base_cost": 2, "per_token_cost": 0.0005 },
-      "render_frida": { "base_cost": 2, "per_token_cost": 0.0005 },
-      "render_timburton": { "base_cost": 2, "per_token_cost": 0.0005 },
-      "render_blake": { "base_cost": 2, "per_token_cost": 0.0005 },
-      "render_salvadordali": { "base_cost": 2, "per_token_cost": 0.0005 },
-      "render_picasso": { "base_cost": 2, "per_token_cost": 0.0005 }
+      "art_styles": { "base_cost": 0, "per_token_cost": 0 },
+      "render_cartoon_90s": { "base_cost": 0, "per_token_cost": 0 },
+      "render_pencil": { "base_cost": 0, "per_token_cost": 0 },
+      "render_color_pencil": { "base_cost": 0, "per_token_cost": 0 },
+      "render_anime": { "base_cost": 0, "per_token_cost": 0 },
+      "render_gn_80s": { "base_cost": 0, "per_token_cost": 0 },
+      "render_game_90s": { "base_cost": 0, "per_token_cost": 0 },
+      "render_minecraft": { "base_cost": 0, "per_token_cost": 0 },
+      "render_frida": { "base_cost": 0, "per_token_cost": 0 },
+      "render_timburton": { "base_cost": 0, "per_token_cost": 0 },
+      "render_blake": { "base_cost": 0, "per_token_cost": 0 },
+      "render_salvadordali": { "base_cost": 0, "per_token_cost": 0 },
+      "render_picasso": { "base_cost": 0, "per_token_cost": 0 }
     },
+
+    "input_conns_allowed": 1,
+    "output_conns_allowed": 1,
+    "input_port_block": [],
+    "output_port_block": [],
+    "instances_allowed": 0,
+
     "default_model": "art_styles",
     "extras": {
       "description": "Apply an art style to the image"
@@ -637,14 +671,21 @@
       "extract_phones"
     ],
     "pricing": {
-      "sum_text": { "base_cost": 10, "per_token_cost": 0.001 },
-      "reword_text": { "base_cost": 10, "per_token_cost": 0.001 },
-      "reco_text": { "base_cost": 10, "per_token_cost": 0.001 },
-      "anti_chatgpt": { "base_cost": 10, "per_token_cost": 0.001 },
-      "extract_ints": { "base_cost": 5, "per_token_cost": 0.0005 },
-      "extract_emails": { "base_cost": 5, "per_token_cost": 0.0005 },
-      "extract_phones": { "base_cost": 5, "per_token_cost": 0.0005 }
+      "sum_text": { "base_cost": 1, "per_token_cost": 0.01 },
+      "reword_text": { "base_cost": 1, "per_token_cost": 0.01 },
+      "reco_text": { "base_cost": 1, "per_token_cost": 0.01 },
+      "anti_chatgpt": { "base_cost": 1, "per_token_cost": 0.01 },
+      "extract_ints": { "base_cost": 1, "per_token_cost": 0.01 },
+      "extract_emails": { "base_cost": 1, "per_token_cost": 0.01 },
+      "extract_phones": { "base_cost": 1, "per_token_cost": 0.01 }
     },
+
+    "input_conns_allowed": 1,
+    "output_conns_allowed": 1,
+    "input_port_block": [],
+    "output_port_block": [],
+    "instances_allowed": 0,
+
     "default_model": "sum_text",
     "extras": {
       "description": "Various text operations"
@@ -683,8 +724,8 @@
       "default": 0.8,
       "last": "na"
     },
-    "credit_cost": 0,
-    "per_token_cost": 0,
+    "credit_cost": 1,
+    "per_token_cost": 0.001,
     "input_conns_allowed": 1,
     "output_conns_allowed": 1,
     "input_port_block": [],
