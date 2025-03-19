@@ -494,65 +494,68 @@
       "description": "Translate text into different languages"
     }
   },
-  "node_render_dall_e_3": {
-    "visible": {
-      "default": true,
-      "last": "na"
-    },
-    "pos_x": {
-      "default": 700,
-      "last": "na"
-    },
-    "pos_y": {
-      "default": 400,
-      "last": "na"
-    },
-    "size_w": {
-      "default": 220,
-      "last": "na"
-    },
-    "size_h": {
-      "default": 140,
-      "last": "na"
-    },
-    "color": {
-      "default": "#1d7513",
-      "last": "na"
-    },
-    "background_color": {
-      "default": "#1d7513",
-      "last": "na"
-    },
-    "opacity": {
-      "default": 0.8,
-      "last": "na"
-    },
-    "dropdown_options": [
-      "render_dall_e_3",
-      "render_dall_e_2"
-    ],
-    "pricing": {
-      "render_dall_e_3": {
-        "base_cost": 20,
-        "per_token_cost": 0.002
-      },
-      "render_dall_e_2": {
-        "base_cost": 18,
-        "per_token_cost": 0.0018
-      }
-    },
 
-    "input_conns_allowed": 1,
-    "output_conns_allowed": 1,
-    "input_port_block": [],
-    "output_port_block": [],
-    "instances_allowed": 0,
 
-    "default_model": "render_dall_e_3",
-    "extras": {
-      "description": "Generate an image using a model"
+"node_render_dall_e_3": {
+  "visible": {
+    "default": true,
+    "last": "na"
+  },
+  "pos_x": {
+    "default": 700,
+    "last": "na"
+  },
+  "pos_y": {
+    "default": 400,
+    "last": "na"
+  },
+  "size_w": {
+    "default": 220,
+    "last": "na"
+  },
+  "size_h": {
+    "default": 140,
+    "last": "na"
+  },
+  "color": {
+    "default": "#1d7513",
+    "last": "na"
+  },
+  "background_color": {
+    "default": "#1d7513",
+    "last": "na"
+  },
+  "opacity": {
+    "default": 0.8,
+    "last": "na"
+  },
+  "dropdown_options": [
+    "render_dall_e_3",
+    "render_dall_e_2"
+  ],
+  "pricing": {
+    "render_dall_e_3": {
+      "base_cost": 0.04,
+      "per_token_cost": 0
+    },
+    "render_dall_e_2": {
+      "base_cost": 0.02,
+      "per_token_cost": 0
     }
   },
+  "input_conns_allowed": 1,
+  "output_conns_allowed": 1,
+  "input_port_block": [],
+  "output_port_block": [],
+  "instances_allowed": 0,
+  "default_model": "render_dall_e_3",
+  "extras": {
+    "description": "Generate an image using a model"
+  }
+}
+
+
+
   "node_art_styles": {
     "visible": {
       "default": true,
