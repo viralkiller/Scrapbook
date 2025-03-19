@@ -43,6 +43,7 @@
       "description": "Master input node"
     }
   },
+
   "output_text": {
     "visible": {
       "default": true,
@@ -87,6 +88,7 @@
       "description": "Master output node"
     }
   },
+
   "node_session_mem": {
     "visible": {
       "default": true,
@@ -132,75 +134,73 @@
     }
   },
 
-
-"node_ask_question": {
-  "visible": {
-    "default": true,
-    "last": "na"
-  },
-  "pos_x": {
-    "default": 500,
-    "last": "na"
-  },
-  "pos_y": {
-    "default": 180,
-    "last": "na"
-  },
-  "size_w": {
-    "default": 220,
-    "last": "na"
-  },
-  "size_h": {
-    "default": 140,
-    "last": "na"
-  },
-  "color": {
-    "default": "#777777",
-    "last": "na"
-  },
-  "background_color": {
-    "default": "#5599cc",
-    "last": "na"
-  },
-  "opacity": {
-    "default": 0.8,
-    "last": "na"
-  },
-  "input_conns_allowed": 1,
-  "output_conns_allowed": 1,
-  "input_port_block": [],
-  "output_port_block": [],
-  "instances_allowed": 3,
-  "dropdown_options": [
-    "ask_question_gpt4o",
-    "ask_question_gpt4_5",
-    "ask_question_claude",
-    "ask_question_claude_think"
-  ],
-  "pricing": {
-    "ask_question_gpt4o": {
-      "base_cost": 1.0,
-      "per_token_cost": 0.01
+  "node_ask_question": {
+    "visible": {
+      "default": true,
+      "last": "na"
     },
-    "ask_question_gpt4_5": {
-      "base_cost": 18.0,
-      "per_token_cost": 0.18
+    "pos_x": {
+      "default": 500,
+      "last": "na"
     },
-    "ask_question_claude": {
-      "base_cost": 0.38,
-      "per_token_cost": 0.0038
+    "pos_y": {
+      "default": 180,
+      "last": "na"
     },
-    "ask_question_claude_think": {
-      "base_cost": 1.44,
-      "per_token_cost": 0.0144
+    "size_w": {
+      "default": 220,
+      "last": "na"
+    },
+    "size_h": {
+      "default": 140,
+      "last": "na"
+    },
+    "color": {
+      "default": "#777777",
+      "last": "na"
+    },
+    "background_color": {
+      "default": "#5599cc",
+      "last": "na"
+    },
+    "opacity": {
+      "default": 0.8,
+      "last": "na"
+    },
+    "input_conns_allowed": 1,
+    "output_conns_allowed": 1,
+    "input_port_block": [],
+    "output_port_block": [],
+    "instances_allowed": 3,
+    "dropdown_options": [
+      "ask_question_gpt4o",
+      "ask_question_gpt4_5",
+      "ask_question_claude",
+      "ask_question_claude_think"
+    ],
+    "pricing": {
+      "ask_question_gpt4o": {
+        "base_cost": 1,
+        "per_token_cost": 0.01
+      },
+      "ask_question_gpt4_5": {
+        "base_cost": 18,
+        "per_token_cost": 0.18
+      },
+      "ask_question_claude": {
+        "base_cost": 0.38,
+        "per_token_cost": 0.0038
+      },
+      "ask_question_claude_think": {
+        "base_cost": 1.44,
+        "per_token_cost": 0.0144
+      }
+    },
+    "default_model": "ask_question_gpt4o",
+    "extras": {
+      "description": "Ask an LLM a question"
     }
   },
-  "default_model": "ask_question_gpt4o",
-  "extras": {
-    "description": "Ask an LLM a question"
-  }
-}
-
 
   "node_custom": {
     "visible": {
@@ -331,19 +331,19 @@
     ],
     "pricing": {
       "tailorcv": {
-        "base_cost": 2,
+        "base_cost": 1,
         "per_token_cost": 0.01
       },
       "coverletter": {
-        "base_cost": 2,
+        "base_cost": 1,
         "per_token_cost": 0.01
       },
       "reviewcv": {
-        "base_cost": 2,
+        "base_cost": 1,
         "per_token_cost": 0.01
       },
       "perfectcv": {
-        "base_cost": 2,
+        "base_cost": 1,
         "per_token_cost": 0.01
       }
     },
@@ -394,7 +394,7 @@
       "last": "na"
     },
     "credit_cost": 1,
-    "per_token_cost": 0.01,
+    "per_token_cost": 1,
     "input_conns_allowed": 1,
     "output_conns_allowed": 1,
     "input_port_block": [],
@@ -494,68 +494,65 @@
       "description": "Translate text into different languages"
     }
   },
-
-
-"node_render_dall_e_3": {
-  "visible": {
-    "default": true,
-    "last": "na"
-  },
-  "pos_x": {
-    "default": 700,
-    "last": "na"
-  },
-  "pos_y": {
-    "default": 400,
-    "last": "na"
-  },
-  "size_w": {
-    "default": 220,
-    "last": "na"
-  },
-  "size_h": {
-    "default": 140,
-    "last": "na"
-  },
-  "color": {
-    "default": "#1d7513",
-    "last": "na"
-  },
-  "background_color": {
-    "default": "#1d7513",
-    "last": "na"
-  },
-  "opacity": {
-    "default": 0.8,
-    "last": "na"
-  },
-  "dropdown_options": [
-    "render_dall_e_3",
-    "render_dall_e_2"
-  ],
-  "pricing": {
-    "render_dall_e_3": {
-      "base_cost": 0.04,
-      "per_token_cost": 0
+  "node_render_dall_e_3": {
+    "visible": {
+      "default": true,
+      "last": "na"
     },
-    "render_dall_e_2": {
-      "base_cost": 0.02,
-      "per_token_cost": 0
+    "pos_x": {
+      "default": 700,
+      "last": "na"
+    },
+    "pos_y": {
+      "default": 400,
+      "last": "na"
+    },
+    "size_w": {
+      "default": 220,
+      "last": "na"
+    },
+    "size_h": {
+      "default": 140,
+      "last": "na"
+    },
+    "color": {
+      "default": "#1d7513",
+      "last": "na"
+    },
+    "background_color": {
+      "default": "#1d7513",
+      "last": "na"
+    },
+    "opacity": {
+      "default": 0.8,
+      "last": "na"
+    },
+    "dropdown_options": [
+      "render_dall_e_3",
+      "render_dall_e_2"
+    ],
+    "pricing": {
+      "render_dall_e_3": {
+        "base_cost": 0.04,
+        "per_token_cost": 0
+      },
+      "render_dall_e_2": {
+        "base_cost": 0.02,
+        "per_token_cost": 0
+      }
+    },
+
+    "input_conns_allowed": 1,
+    "output_conns_allowed": 1,
+    "input_port_block": [],
+    "output_port_block": [],
+    "instances_allowed": 0,
+
+    "default_model": "render_dall_e_3",
+    "extras": {
+      "description": "Generate an image using a model"
     }
   },
-  "input_conns_allowed": 1,
-  "output_conns_allowed": 1,
-  "input_port_block": [],
-  "output_port_block": [],
-  "instances_allowed": 0,
-  "default_model": "render_dall_e_3",
-  "extras": {
-    "description": "Generate an image using a model"
-  }
-}
-
-
-
   "node_art_styles": {
     "visible": {
       "default": true,
