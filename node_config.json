@@ -2,37 +2,37 @@
   "input_text": {
     "visible": {
       "default": true,
-      "last": "na"
+        "last": true
     },
     "pos_x": {
       "default": 40,
-      "last": "na"
+      "last": false
     },
     "pos_y": {
       "default": 100,
-      "last": "na"
+      "last": false
     },
     "size_w": {
       "default": 340,
-      "last": "na"
+      "last": false
     },
     "size_h": {
       "default": 300,
-      "last": "na"
+      "last": false
     },
     "color": {
       "default": "#5599cc",
-      "last": "na"
+      "last": false
     },
     "background_color": {
       "default": "#5599cc",
-      "last": "na"
+      "last": false
     },
     "opacity": {
       "default": 0.8,
-      "last": "na"
+      "last": false
     },
-    "credit_cost": 0,
+    "base_cost": 0,
     "per_token_cost": 0,
     "input_conns_allowed": 0,
     "output_conns_allowed": -1,
@@ -47,37 +47,37 @@
   "output_text": {
     "visible": {
       "default": true,
-      "last": "na"
+        "last": true
     },
     "pos_x": {
       "default": 1200,
-      "last": "na"
+      "last": false
     },
     "pos_y": {
       "default": 100,
-      "last": "na"
+      "last": false
     },
     "size_w": {
       "default": 340,
-      "last": "na"
+      "last": false
     },
     "size_h": {
       "default": 300,
-      "last": "na"
+      "last": false
     },
     "color": {
       "default": "#5599cc",
-      "last": "na"
+      "last": false
     },
     "background_color": {
       "default": "#5599cc",
-      "last": "na"
+      "last": false
     },
     "opacity": {
       "default": 0.8,
-      "last": "na"
+      "last": false
     },
-    "credit_cost": 0,
+    "base_cost": 0,
     "per_token_cost": 0,
     "input_conns_allowed": 1,
     "output_conns_allowed": 0,
@@ -91,38 +91,38 @@
 
   "node_session_mem": {
     "visible": {
-      "default": true,
-      "last": "na"
+      "default": false,
+      "last": false
     },
     "pos_x": {
       "default": 700,
-      "last": "na"
+      "last": false
     },
     "pos_y": {
       "default": 180,
-      "last": "na"
+      "last": false
     },
     "size_w": {
       "default": 220,
-      "last": "na"
+      "last": false
     },
     "size_h": {
       "default": 140,
-      "last": "na"
+      "last": false
     },
     "color": {
       "default": "#777777",
-      "last": "na"
+      "last": false
     },
     "background_color": {
       "default": "#777777",
-      "last": "na"
+      "last": false
     },
     "opacity": {
       "default": 0.8,
-      "last": "na"
+      "last": false
     },
-    "credit_cost": 0,
+    "base_cost": 0,
     "per_token_cost": 0,
     "input_conns_allowed": 1,
     "output_conns_allowed": 1,
@@ -137,35 +137,35 @@
   "node_ask_question": {
     "visible": {
       "default": true,
-      "last": "na"
+      "last": true
     },
     "pos_x": {
       "default": 500,
-      "last": "na"
+      "last": false
     },
     "pos_y": {
       "default": 180,
-      "last": "na"
+      "last": false
     },
     "size_w": {
       "default": 220,
-      "last": "na"
+      "last": false
     },
     "size_h": {
       "default": 140,
-      "last": "na"
+      "last": false
     },
     "color": {
       "default": "#777777",
-      "last": "na"
+      "last": false
     },
     "background_color": {
       "default": "#5599cc",
-      "last": "na"
+      "last": false
     },
     "opacity": {
       "default": 0.8,
-      "last": "na"
+      "last": false
     },
     "input_conns_allowed": 1,
     "output_conns_allowed": 1,
@@ -204,38 +204,38 @@
 
   "node_custom": {
     "visible": {
-      "default": true,
-      "last": "na"
+      "default": false,
+      "last": false
     },
     "pos_x": {
       "default": 500,
-      "last": "na"
+      "last": false
     },
     "pos_y": {
       "default": 280,
-      "last": "na"
+      "last": false
     },
     "size_w": {
       "default": 220,
-      "last": "na"
+      "last": false
     },
     "size_h": {
       "default": 140,
-      "last": "na"
+      "last": false
     },
     "color": {
       "default": "#c9691a",
-      "last": "na"
+      "last": false
     },
     "background_color": {
       "default": "#c9691a",
-      "last": "na"
+      "last": false
     },
     "opacity": {
       "default": 0.8,
-      "last": "na"
+      "last": false
     },
-    "credit_cost": 1,
+    "base_cost": 1,
     "per_token_cost": 0.01,
     "input_conns_allowed": 1,
     "output_conns_allowed": 1,
@@ -249,37 +249,37 @@
   "node_merge": {
     "visible": {
       "default": true,
-      "last": "na"
+      "last": true
     },
     "pos_x": {
       "default": 750,
-      "last": "na"
+      "last": false
     },
     "pos_y": {
       "default": 180,
-      "last": "na"
+      "last": false
     },
     "size_w": {
       "default": 200,
-      "last": "na"
+      "last": false
     },
     "size_h": {
       "default": 120,
-      "last": "na"
+      "last": false
     },
     "color": {
       "default": "#aaaaaa",
-      "last": "na"
+      "last": false
     },
     "background_color": {
       "default": "#aaaaaa",
-      "last": "na"
+      "last": false
     },
     "opacity": {
       "default": 0.8,
-      "last": "na"
+      "last": false
     },
-    "credit_cost": 0,
+    "base_cost": 0,
     "per_token_cost": 0,
     "input_conns_allowed": -1,
     "output_conns_allowed": 1,
@@ -293,35 +293,35 @@
   "node_tailorcv": {
     "visible": {
       "default": false,
-      "last": "na"
+      "last": false
     },
     "pos_x": {
       "default": 520,
-      "last": "na"
+      "last": false
     },
     "pos_y": {
       "default": 300,
-      "last": "na"
+      "last": false
     },
     "size_w": {
       "default": 220,
-      "last": "na"
+      "last": false
     },
     "size_h": {
       "default": 140,
-      "last": "na"
+      "last": false
     },
     "color": {
       "default": "#777777",
-      "last": "na"
+      "last": false
     },
     "background_color": {
       "default": "#777777",
-      "last": "na"
+      "last": false
     },
     "opacity": {
       "default": 0.8,
-      "last": "na"
+      "last": false
     },
     "dropdown_options": [
       "tailorcv",
@@ -331,19 +331,19 @@
     ],
     "pricing": {
       "tailorcv": {
-        "base_cost": 1,
+        "base_cost": 2,
         "per_token_cost": 0.01
       },
       "coverletter": {
-        "base_cost": 1,
+        "base_cost": 2,
         "per_token_cost": 0.01
       },
       "reviewcv": {
-        "base_cost": 1,
+        "base_cost": 2,
         "per_token_cost": 0.01
       },
       "perfectcv": {
-        "base_cost": 1,
+        "base_cost": 2,
         "per_token_cost": 0.01
       }
     },
@@ -363,38 +363,38 @@
   "node_vision": {
     "visible": {
       "default": true,
-      "last": "na"
+      "last": true
     },
     "pos_x": {
       "default": 300,
-      "last": "na"
+      "last": false
     },
     "pos_y": {
       "default": 500,
-      "last": "na"
+      "last": false
     },
     "size_w": {
       "default": 220,
-      "last": "na"
+      "last": false
     },
     "size_h": {
       "default": 160,
-      "last": "na"
+      "last": false
     },
     "color": {
       "default": "#9d64a3",
-      "last": "na"
+      "last": false
     },
     "background_color": {
       "default": "#9d64a3",
-      "last": "na"
+      "last": false
     },
     "opacity": {
       "default": 0.8,
-      "last": "na"
+      "last": false
     },
-    "credit_cost": 1,
-    "per_token_cost": 1,
+    "base_cost": 1,
+    "per_token_cost": 0.01,
     "input_conns_allowed": 1,
     "output_conns_allowed": 1,
     "input_port_block": [],
@@ -407,36 +407,36 @@
 
   "node_translate": {
     "visible": {
-      "default": true,
-      "last": "na"
+      "default": false,
+      "last": false
     },
     "pos_x": {
       "default": 520,
-      "last": "na"
+      "last": false
     },
     "pos_y": {
       "default": 420,
-      "last": "na"
+      "last": false
     },
     "size_w": {
       "default": 220,
-      "last": "na"
+      "last": false
     },
     "size_h": {
       "default": 140,
-      "last": "na"
+      "last": false
     },
     "color": {
       "default": "#4d6682",
-      "last": "na"
+      "last": false
     },
     "background_color": {
       "default": "#4d6682",
-      "last": "na"
+      "last": false
     },
     "opacity": {
       "default": 0.8,
-      "last": "na"
+      "last": false
     },
     "dropdown_options": [
       "translate_japanese",
@@ -497,35 +497,35 @@
   "node_render_dall_e_3": {
     "visible": {
       "default": true,
-      "last": "na"
+      "last": true
     },
     "pos_x": {
       "default": 700,
-      "last": "na"
+      "last": false
     },
     "pos_y": {
       "default": 400,
-      "last": "na"
+      "last": false
     },
     "size_w": {
       "default": 220,
-      "last": "na"
+      "last": false
     },
     "size_h": {
       "default": 140,
-      "last": "na"
+      "last": false
     },
     "color": {
       "default": "#1d7513",
-      "last": "na"
+      "last": false
     },
     "background_color": {
       "default": "#1d7513",
-      "last": "na"
+      "last": false
     },
     "opacity": {
       "default": 0.8,
-      "last": "na"
+      "last": false
     },
     "dropdown_options": [
       "render_dall_e_3",
@@ -556,35 +556,35 @@
   "node_art_styles": {
     "visible": {
       "default": true,
-      "last": "na"
+      "last": true
     },
     "pos_x": {
       "default": 720,
-      "last": "na"
+      "last": false
     },
     "pos_y": {
       "default": 420,
-      "last": "na"
+      "last": false
     },
     "size_w": {
       "default": 220,
-      "last": "na"
+      "last": false
     },
     "size_h": {
       "default": 140,
-      "last": "na"
+      "last": false
     },
     "color": {
       "default": "#1d7513",
-      "last": "na"
+      "last": false
     },
     "background_color": {
       "default": "#1d7513",
-      "last": "na"
+      "last": false
     },
     "opacity": {
       "default": 0.8,
-      "last": "na"
+      "last": false
     },
     "dropdown_options": [
       "art_styles",
@@ -631,35 +631,35 @@
   "node_sum_text": {
     "visible": {
       "default": false,
-      "last": "na"
+      "last": false
     },
     "pos_x": {
       "default": 750,
-      "last": "na"
+      "last": false
     },
     "pos_y": {
       "default": 320,
-      "last": "na"
+      "last": false
     },
     "size_w": {
       "default": 220,
-      "last": "na"
+      "last": false
     },
     "size_h": {
       "default": 140,
-      "last": "na"
+      "last": false
     },
     "color": {
       "default": "#777777",
-      "last": "na"
+      "last": false
     },
     "background_color": {
       "default": "#777777",
-      "last": "na"
+      "last": false
     },
     "opacity": {
       "default": 0.8,
-      "last": "na"
+      "last": false
     },
     "dropdown_options": [
       "sum_text",
@@ -693,38 +693,38 @@
   },
   "node_email_me": {
     "visible": {
-      "default": true,
-      "last": "na"
+      "default": false,
+      "last": false
     },
     "pos_x": {
       "default": 800,
-      "last": "na"
+      "last": false
     },
     "pos_y": {
       "default": 600,
-      "last": "na"
+      "last": false
     },
     "size_w": {
       "default": 220,
-      "last": "na"
+      "last": false
     },
     "size_h": {
       "default": 140,
-      "last": "na"
+      "last": false
     },
     "color": {
       "default": "#444444",
-      "last": "na"
+      "last": false
     },
     "background_color": {
       "default": "#444444",
-      "last": "na"
+      "last": false
     },
     "opacity": {
       "default": 0.8,
-      "last": "na"
+      "last": false
     },
-    "credit_cost": 1,
+    "base_cost": 1,
     "per_token_cost": 0.001,
     "input_conns_allowed": 1,
     "output_conns_allowed": 1,
