@@ -185,28 +185,28 @@
     "pricing": {
       "ask_question_gpt4o": {
         "base_cost": 1,
-        "1M_token_cost_input": 0.01
+        "1M_token_cost_input": 0.01,
         "1M_token_cost_output": 0.01
 
       },
       "ask_question_gpt4_5": {
         "base_cost": 18,
-        "1M_token_cost_input": 0.18
+        "1M_token_cost_input": 0.18,
         "1M_token_cost_output": 0.18
       },
       "ask_question_o1": {
         "base_cost": 6,
-        "1M_token_cost_input": 0.06
+        "1M_token_cost_input": 0.06,
         "1M_token_cost_output": 0.06
       },
       "ask_question_claude": {
         "base_cost": 0.38,
-        "1M_token_cost_input": 0.0038
+        "1M_token_cost_input": 0.0038,
         "1M_token_cost_output": 0.0038
       },
       "ask_question_claude_think": {
         "base_cost": 1.44,
-        "1M_token_cost_input": 0.0144
+        "1M_token_cost_input": 0.0144,
         "1M_token_cost_output": 0.0144
       }
     },
@@ -348,24 +348,24 @@
     "pricing": {
       "tailorcv": {
         "base_cost": 2,
-        "1M_token_cost_input": 0.01
+        "1M_token_cost_input": 0.01,
         "1M_token_cost_output": 0.01
 
       },
       "coverletter": {
         "base_cost": 2,
-        "1M_token_cost_input": 0.01
+        "1M_token_cost_input": 0.01,
         "1M_token_cost_output": 0.01
 
       },
       "reviewcv": {
         "base_cost": 2,
-        "1M_token_cost_input": 0.01
+        "1M_token_cost_input": 0.01,
         "1M_token_cost_output": 0.01
       },
       "perfectcv": {
         "base_cost": 2,
-        "1M_token_cost_input": 0.01
+        "1M_token_cost_input": 0.01,
         "1M_token_cost_output": 0.01
       }
     },
@@ -557,12 +557,12 @@
     "pricing": {
       "render_dall_e_3": {
         "base_cost": 0.04,
-        "1M_token_cost_input": 0
+        "1M_token_cost_input": 0,
         "1M_token_cost_output": 0
       },
       "render_dall_e_2": {
         "base_cost": 0.02,
-        "1M_token_cost_input": 0
+        "1M_token_cost_input": 0,
         "1M_token_cost_output": 0
       }
     },
