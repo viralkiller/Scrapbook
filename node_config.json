@@ -137,84 +137,83 @@
     }
   },
 
-  "node_ask_question": {
-    "visible": {
-      "default": true,
-      "last": true
-    },
-    "pos_x": {
-      "default": 500,
-      "last": false
-    },
-    "pos_y": {
-      "default": 180,
-      "last": false
-    },
-    "size_w": {
-      "default": 220,
-      "last": false
-    },
-    "size_h": {
-      "default": 140,
-      "last": false
-    },
-    "color": {
-      "default": "#777777",
-      "last": false
-    },
-    "background_color": {
-      "default": "#5599cc",
-      "last": false
-    },
-    "opacity": {
-      "default": 0.8,
-      "last": false
-    },
-    "input_conns_allowed": 1,
-    "output_conns_allowed": 1,
-    "input_port_block": [],
-    "output_port_block": [],
-    "instances_allowed": 3,
-    "dropdown_options": [
-      "ask_question_gpt4o",
-      "ask_question_gpt4_5",
-      "ask_question_o1",
-      "ask_question_claude",
-      "ask_question_claude_think"
-    ],
-    "pricing": {
-      "ask_question_gpt4o": {
-        "base_cost": 1,
-        "1M_token_cost_input": 0.01,
-        "1M_token_cost_output": 0.01
-
+    "node_ask_question": {
+      "visible": {
+        "default": true,
+        "last": true
       },
-      "ask_question_gpt4_5": {
-        "base_cost": 18,
-        "1M_token_cost_input": 0.18,
-        "1M_token_cost_output": 0.18
+      "pos_x": {
+        "default": 500,
+        "last": false
       },
-      "ask_question_o1": {
-        "base_cost": 6,
-        "1M_token_cost_input": 0.06,
-        "1M_token_cost_output": 0.06
+      "pos_y": {
+        "default": 180,
+        "last": false
       },
-      "ask_question_claude": {
-        "base_cost": 0.38,
-        "1M_token_cost_input": 0.0038,
-        "1M_token_cost_output": 0.0038
+      "size_w": {
+        "default": 220,
+        "last": false
       },
-      "ask_question_claude_think": {
-        "base_cost": 1.44,
-        "1M_token_cost_input": 0.0144,
-        "1M_token_cost_output": 0.0144
+      "size_h": {
+        "default": 140,
+        "last": false
+      },
+      "color": {
+        "default": "#777777",
+        "last": false
+      },
+      "background_color": {
+        "default": "#5599cc",
+        "last": false
+      },
+      "opacity": {
+        "default": 0.8,
+        "last": false
+      },
+      "input_conns_allowed": 1,
+      "output_conns_allowed": 1,
+      "input_port_block": [],
+      "output_port_block": [],
+      "instances_allowed": 3,
+      "dropdown_options": [
+        "ask_question_gpt4o",
+        "ask_question_gpt4_5",
+        "ask_question_o1",
+        "ask_question_claude",
+        "ask_question_claude_think"
+      ],
+      "pricing": {
+        "ask_question_gpt4o": {
+          "base_cost": 0,
+          "1M_token_cost_input": 2.50,
+          "1M_token_cost_output": 10.00
+        },
+        "ask_question_gpt4_5": {
+          "base_cost": 0,
+          "1M_token_cost_input": 75.00,
+          "1M_token_cost_output": 150.00
+        },
+        "ask_question_o1": {
+          "base_cost": 0,
+          "1M_token_cost_input": 15.00,
+          "1M_token_cost_output": 60.00
+        },
+        "ask_question_claude": {
+          "base_cost": 0,
+          "1M_token_cost_input": 0.80,
+          "1M_token_cost_output": 4.00
+        },
+        "ask_question_claude_think": {
+          "base_cost": 0,
+          "1M_token_cost_input": 15.00,
+          "1M_token_cost_output": 75.00
+        }
+      },
+      "default_model": "ask_question_gpt4o",
+      "extras": {
+        "description": "Ask an LLM a question"
       }
     },
-    "default_model": "ask_question_gpt4o",
-    "extras": {
-      "description": "Ask an LLM a question"
-    }
-  },
 
   "node_custom": {
     "visible": {
@@ -249,9 +248,9 @@
       "default": 0.8,
       "last": false
     },
-    "base_cost": 1,
-    "1M_token_cost_input": 0.01,
-    "1M_token_cost_output": 0.01,
+    "base_cost": 0,
+    "1M_token_cost_input": 2.50,
+    "1M_token_cost_output": 10.00,
     "input_conns_allowed": 1,
     "output_conns_allowed": 1,
     "input_port_block": [],
@@ -261,6 +260,9 @@
       "description": "Custom node with user-defined instructions"
     }
   },
+
+
+
   "node_merge": {
     "visible": {
       "default": true,
@@ -347,26 +349,26 @@
     ],
     "pricing": {
       "tailorcv": {
-        "base_cost": 2,
-        "1M_token_cost_input": 0.01,
-        "1M_token_cost_output": 0.01
+        "base_cost": 0,
+        "1M_token_cost_input": 2.50,
+        "1M_token_cost_output": 10.00
 
       },
       "coverletter": {
-        "base_cost": 2,
-        "1M_token_cost_input": 0.01,
-        "1M_token_cost_output": 0.01
+        "base_cost": 0,
+        "1M_token_cost_input": 2.50,
+        "1M_token_cost_output": 10.00
 
       },
       "reviewcv": {
-        "base_cost": 2,
-        "1M_token_cost_input": 0.01,
-        "1M_token_cost_output": 0.01
+        "base_cost": 0,
+        "1M_token_cost_input": 2.50,
+        "1M_token_cost_output": 10.00
       },
       "perfectcv": {
-        "base_cost": 2,
-        "1M_token_cost_input": 0.01,
-        "1M_token_cost_output": 0.01
+        "base_cost": 0,
+        "1M_token_cost_input": 2.50,
+        "1M_token_cost_output": 10.00
       }
     },
 
@@ -382,6 +384,9 @@
       "description": "Tailor your CV based on provided job requirements"
     }
   },
+
+
+
   "node_vision": {
     "visible": {
       "default": true,
@@ -415,9 +420,9 @@
       "default": 0.8,
       "last": false
     },
-    "base_cost": 1,
-    "1M_token_cost_input": 0.01,
-    "1M_token_cost_output": 0.01,
+    "base_cost": 0,
+    "1M_token_cost_input": 2.50,
+    "1M_token_cost_output": 10.00,
     "input_conns_allowed": 1,
     "output_conns_allowed": 1,
     "input_port_block": [],
@@ -484,26 +489,26 @@
       "translate_indonesian"
     ],
     "pricing": {
-      "translate_japanese": { "base_cost": 1, "1M_token_cost_input": 0.01 , "1M_token_cost_output": 0.01 },
-      "translate_english": { "base_cost": 1, "1M_token_cost_input": 0.01 , "1M_token_cost_output": 0.01 },
-      "translate_french": { "base_cost": 1, "1M_token_cost_input": 0.01, "1M_token_cost_output": 0.01  },
-      "translate_arabic": { "base_cost": 1, "1M_token_cost_input": 0.01 , "1M_token_cost_output": 0.01 },
-      "translate_german": { "base_cost": 1, "1M_token_cost_input": 0.01 , "1M_token_cost_output": 0.01 },
-      "translate_russian": { "base_cost": 1, "1M_token_cost_input": 0.01 , "1M_token_cost_output": 0.01 },
-      "translate_spanish": { "base_cost": 1, "1M_token_cost_input": 0.01 , "1M_token_cost_output": 0.01 },
-      "translate_dutch": { "base_cost": 1, "1M_token_cost_input": 0.01 , "1M_token_cost_output": 0.01 },
-      "translate_finnish": { "base_cost": 1, "1M_token_cost_input": 0.01 , "1M_token_cost_output": 0.01 },
-      "translate_turkish": { "base_cost": 1, "1M_token_cost_input": 0.01 , "1M_token_cost_output": 0.01 },
-      "translate_chinese": { "base_cost": 1, "1M_token_cost_input": 0.01 , "1M_token_cost_output": 0.01 },
-      "translate_italian": { "base_cost": 1, "1M_token_cost_input": 0.01, "1M_token_cost_output": 0.01  },
-      "translate_swedish": { "base_cost": 1, "1M_token_cost_input": 0.01, "1M_token_cost_output": 0.01  },
-      "translate_portuguese": { "base_cost": 1, "1M_token_cost_input": 0.01 , "1M_token_cost_output": 0.01 },
-      "translate_korean": { "base_cost": 1, "1M_token_cost_input": 0.01, "1M_token_cost_output": 0.01  },
-      "translate_polish": { "base_cost": 1, "1M_token_cost_input": 0.01 , "1M_token_cost_output": 0.01 },
-      "translate_hungarian": { "base_cost": 1, "1M_token_cost_input": 0.01 , "1M_token_cost_output": 0.01 },
-      "translate_thai": { "base_cost": 1, "1M_token_cost_input": 0.01 , "1M_token_cost_output": 0.01 },
-      "translate_czech": { "base_cost": 1, "1M_token_cost_input": 0.01 , "1M_token_cost_output": 0.01 },
-      "translate_indonesian": { "base_cost": 1, "1M_token_cost_input": 0.01 , "1M_token_cost_output": 0.01 }
+      "translate_japanese": { "base_cost": 0, "1M_token_cost_input": 2.50 , "1M_token_cost_output": 10.00 },
+      "translate_english": { "base_cost": 0, "1M_token_cost_input": 2.50 , "1M_token_cost_output": 10.00 },
+      "translate_french": { "base_cost": 0, "1M_token_cost_input": 2.50, "1M_token_cost_output": 10.00  },
+      "translate_arabic": { "base_cost": 0, "1M_token_cost_input": 2.50 , "1M_token_cost_output": 10.00 },
+      "translate_german": { "base_cost": 0, "1M_token_cost_input": 2.50 , "1M_token_cost_output": 10.00 },
+      "translate_russian": { "base_cost": 0, "1M_token_cost_input": 2.50 , "1M_token_cost_output": 10.00 },
+      "translate_spanish": { "base_cost": 0, "1M_token_cost_input": 2.50 , "1M_token_cost_output": 10.00 },
+      "translate_dutch": { "base_cost": 0, "1M_token_cost_input": 2.50 , "1M_token_cost_output": 10.00 },
+      "translate_finnish": { "base_cost": 0, "1M_token_cost_input": 2.50 , "1M_token_cost_output": 10.00 },
+      "translate_turkish": { "base_cost": 0, "1M_token_cost_input": 2.50 , "1M_token_cost_output": 10.00 },
+      "translate_chinese": { "base_cost": 0, "1M_token_cost_input": 2.50 , "1M_token_cost_output": 10.00 },
+      "translate_italian": { "base_cost": 0, "1M_token_cost_input": 2.50, "1M_token_cost_output": 10.00  },
+      "translate_swedish": { "base_cost": 0, "1M_token_cost_input": 2.50, "1M_token_cost_output": 10.00  },
+      "translate_portuguese": { "base_cost": 0, "1M_token_cost_input": 2.50 , "1M_token_cost_output": 10.00 },
+      "translate_korean": { "base_cost": 0, "1M_token_cost_input": 2.50, "1M_token_cost_output": 10.00  },
+      "translate_polish": { "base_cost": 0, "1M_token_cost_input": 2.50 , "1M_token_cost_output": 10.00 },
+      "translate_hungarian": { "base_cost": 0, "1M_token_cost_input": 2.50 , "1M_token_cost_output": 10.00 },
+      "translate_thai": { "base_cost": 0, "1M_token_cost_input": 2.50 , "1M_token_cost_output": 10.00 },
+      "translate_czech": { "base_cost": 0, "1M_token_cost_input": 2.50 , "1M_token_cost_output": 10.00 },
+      "translate_indonesian": { "base_cost": 0, "1M_token_cost_input": 2.50 , "1M_token_cost_output": 10.00 }
     },
 
     "input_conns_allowed": 1,
@@ -696,13 +701,13 @@
       "extract_phones"
     ],
     "pricing": {
-      "sum_text": { "base_cost": 1, "1M_token_cost_input": 0.01 , "1M_token_cost_output": 0.01},
-      "reword_text": { "base_cost": 1, "1M_token_cost_input": 0.01 , "1M_token_cost_output": 0.01},
-      "reco_text": { "base_cost": 1, "1M_token_cost_input": 0.01 , "1M_token_cost_output": 0.01},
-      "anti_chatgpt": { "base_cost": 1, "1M_token_cost_input": 0.01 , "1M_token_cost_output": 0.01},
-      "extract_ints": { "base_cost": 1, "1M_token_cost_input": 0.01 , "1M_token_cost_output": 0.01},
-      "extract_emails": { "base_cost": 1, "1M_token_cost_input": 0.01 , "1M_token_cost_output": 0.01},
-      "extract_phones": { "base_cost": 1, "1M_token_cost_input": 0.01 , "1M_token_cost_output": 0.01}
+      "sum_text": { "base_cost": 0, "1M_token_cost_input": 2.50 , "1M_token_cost_output": 10.00},
+      "reword_text": { "base_cost": 0, "1M_token_cost_input": 2.50 , "1M_token_cost_output": 10.00},
+      "reco_text": { "base_cost": 0, "1M_token_cost_input": 2.50 , "1M_token_cost_output": 10.00},
+      "anti_chatgpt": { "base_cost": 0, "1M_token_cost_input": 2.50 , "1M_token_cost_output": 10.00},
+      "extract_ints": { "base_cost": 0, "1M_token_cost_input": 2.50 , "1M_token_cost_output": 10.00},
+      "extract_emails": { "base_cost": 0, "1M_token_cost_input": 2.50 , "1M_token_cost_output": 10.00},
+      "extract_phones": { "base_cost": 0, "1M_token_cost_input": 2.50 , "1M_token_cost_output": 10.00}
     },
 
     "input_conns_allowed": 1,
@@ -749,9 +754,9 @@
       "default": 0.8,
       "last": false
     },
-    "base_cost": 1,
+    "base_cost": 0,
     "1M_token_cost_input": 0.001,
-    "1M_token_cost_output": 0.001,
+    "1M_token_cost_output": 0,
     "input_conns_allowed": 1,
     "output_conns_allowed": 1,
     "input_port_block": [],
